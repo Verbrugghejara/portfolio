@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&display=swap');
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme {
+:root {
     --font-primary: "Roboto Mono", monospace;
     --font-secondary: "Agdasima", serif;
 
@@ -10,7 +12,6 @@
     --color-alphaLightBlack: #282723;
     --color-alphaWhite: #FEF3F0;
     --color-alphaOrange: #D84E2C;
-
 }
 
 body {
