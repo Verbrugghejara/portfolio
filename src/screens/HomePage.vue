@@ -1,38 +1,87 @@
-
-<template >
+<template>
   <MenuButton />
   <header class="relative min-h-screen">
     <HeaderBar />
     <div class="mx-6 relative">
       <div class="pt-6 mt-6 relative overflow-hidden">
-        <p class="font-secondary font-bold bg-alphaOrange absolute px-3 py-0.5 rounded-full tracking-wider right-6 top-0">2026</p>
+        <p
+          class="font-secondary font-bold bg-alphaOrange absolute px-3 py-0.5 rounded-full tracking-wider right-6 top-0">
+          2026</p>
         <h1 class="uppercase font-secondary font-bold text-7xl">Portfolio</h1>
       </div>
       <div>
         <p class="text-2xl">Devine student</p>
       </div>
-      <p class="absolute text-[110px] uppercase font-secondary font-bold text-outline -rotate-15 -left-12 top-10 -z-10">Developer</p>
+      <p class="absolute text-[110px] uppercase font-secondary font-bold text-outline -rotate-15 -left-12 top-10 -z-10">
+        Developer</p>
       <div>
         <p class="leading-relaxed mt-25">
           <span class="text-alphaOrange font-bold">&lt;span&gt;</span>
-          <span class="block"> &nbsp;&nbsp;Frontend Developer <br> &nbsp;&nbsp;in the making. <br> &nbsp;&nbsp;Graduating in July 2026</span>
+          <span class="block"> &nbsp;&nbsp;Frontend Developer <br> &nbsp;&nbsp;in the making. <br>
+            &nbsp;&nbsp;Graduating in July 2026</span>
           <span class="text-alphaOrange font-bold">&lt;/span&gt;</span>
         </p>
       </div>
     </div>
-    <p class="absolute text-[310px] uppercase font-bold text-outline-xl -left-32 bottom-0 -z-10 -tracking-[0.12em]">&lt;/&gt;</p>
+    <p class="absolute text-[310px] uppercase font-bold text-outline-xl -left-32 bottom-0 -z-10 -tracking-[0.12em]">
+      &lt;/&gt;</p>
     <div class="absolute right-2 bottom-4">
       <ScrollIndicator />
     </div>
   </header>
-  <section class="mx-6 py-12">
+  <section class="mx-6">
     <SubTitles mainText="About Me" backgroundText="About" />
     <div class="relative flex justify-center items-center h-96">
       <div class="absolute top-15 left-[58%] -translate-x-1/2 w-64 h-80 border-6 border-alphaOrange rounded-2xl"></div>
       <div class="relative w-64 h-80 bg-alphaWhite rounded-2xl shadow-lg"></div>
     </div>
+    <div class="bg-alphaLightBlack rounded-md w-full h-fit mt-8 p-4">
+      <div class="flex items-center gap-4">
+        <div class="flex gap-1">
+          <div class="w-[13px] h-[13px] bg-[#FF5F56] rounded-full"></div>
+          <div class="w-[13px] h-[13px] bg-[#FFBD2E] rounded-full"></div>
+          <div class="w-[13px] h-[13px] bg-[#27C93F] rounded-full"></div>
+        </div>
+        <p>about-me.js</p>
+      </div>
+      <div class="mt-4 w-full overflow-x-auto">
+  <pre class=" text-white p-4 rounded-2xl font-mono leading-relaxed min-w-[500px]">
+<span class="text-alphaOrange">const</span> Jara = {
+  version: <span class="text-alphaOrange">"2002.03.29"</span>,
+  location: [<span class="text-alphaOrange">"Ruiselede", "Belgium"</span>],
+  languages: [<span class="text-alphaOrange">"Dutch", "English", "HTML", "CSS", "JS"</span>],
+  status: <span class="text-alphaOrange">"Student"</span>,
+  education: [
+    {
+      program: <span class="text-alphaOrange">"Multimedia and Creative Technologies (MCT)"</span>,
+      university: <span class="text-alphaOrange">"Howest University of Applied Sciences"</span>,
+      graduated: <span class="text-alphaOrange">"2023"</span>
+    },
+    {
+      program: <span class="text-alphaOrange">"Digital Design and Development (DEVINE)"</span>,
+      university: <span class="text-alphaOrange">"Howest University of Applied Sciences"</span>,
+      graduating: <span class="text-alphaOrange">"2026"</span>
+    }
+  ],
+  likes: [<span class="text-alphaOrange">"Clean design", "Night coding"</span>],
+  dislikes: [<span class="text-alphaOrange">"Clunky UX"</span>],
+  hobbies: [<span class="text-alphaOrange">"Soccer", "Gaming", "Hanging out with friends"</span>]
+};
+  </pre>
+</div>
+<div class="flex gap-2 items-center justify-center mt-4">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+</svg>
+<p class="uppercase">scroll horizontal</p>
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+</svg>
+</div>
+
+    </div>
     <div class="mt-12 text-center font-bold">
-      <p >Want to know more about me?</p>
+      <p>Want to know more about me?</p>
       <button class="mt-2 px-4 py-2 bg-alphaOrange uppercase text-white rounded-md">Resume</button>
     </div>
   </section>
@@ -56,56 +105,36 @@
       <SubTitles mainText="My Projects" backgroundText="Projects" />
       <p class="mb-8">Here are my top 5 projects:</p>
     </div>
-    
+
     <div class="relative overflow-hidden">
-      <div 
-        ref="textOverlay"
-        class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center max-w-4xl z-20 pointer-events-none"
-      >
+      <div ref="textOverlay"
+        class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center max-w-4xl z-20 pointer-events-none">
         <h3 class="text-6xl mb-4 font-secondary w-max">{{ projects[currentSlide % totalSlides].title }}</h3>
         <p class="text-xl text-alphaOrange mb-2">{{ projects[currentSlide % totalSlides].category }}</p>
       </div>
-      
-      <div 
-        ref="carouselRef"
-        class="overflow-hidden"
-      >
-        <div 
-          class="flex gap-4 transition-transform duration-500 ease-in-out"
-          :style="{ transform: `translateX(${translateX}px)` }"
-        >
+
+      <div ref="carouselRef" class="overflow-hidden">
+        <div class="flex gap-4 transition-transform duration-500 ease-in-out"
+          :style="{ transform: `translateX(${translateX}px)` }">
           <template v-for="repeatIndex in 3" :key="`repeat-${repeatIndex}`">
-            <div 
-              v-for="(project, index) in projects" 
-              :key="`${repeatIndex}-${project.id}`"
-              class="shrink-0" 
-              :style="{ width: cardWidth }"
-            >
-              <ProjectCard 
-                :number="project.id"
-                :title="project.title"
-                :category="project.category"
-                :description="project.description"
-                :imageUrl="project.imageUrl"
-                :isActive="isActiveSlide(repeatIndex, index)"
-              />
+            <div v-for="(project, index) in projects" :key="`${repeatIndex}-${project.id}`" class="shrink-0"
+              :style="{ width: cardWidth }">
+              <ProjectCard :number="project.id" :title="project.title" :category="project.category"
+                :description="project.description" :imageUrl="project.imageUrl"
+                :isActive="isActiveSlide(repeatIndex, index)" />
             </div>
           </template>
         </div>
       </div>
 
-      <button 
-        @click="prevSlide" 
-        class="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-alphaOrange rounded-full flex items-center justify-center hover:bg-opacity-80 transition-all z-10"
-      >
+      <button @click="prevSlide"
+        class="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-alphaOrange rounded-full flex items-center justify-center hover:bg-opacity-80 transition-all z-10">
         <svg class="w-6 h-6 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>
       </button>
-      <button 
-        @click="nextSlide" 
-        class="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-alphaOrange rounded-full flex items-center justify-center hover:bg-opacity-80 transition-all z-10"
-      >
+      <button @click="nextSlide"
+        class="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-alphaOrange rounded-full flex items-center justify-center hover:bg-opacity-80 transition-all z-10">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>
@@ -155,10 +184,10 @@ const translateX = computed(() => {
   const containerWidth = carouselRef.value.offsetWidth
   const cardWidthPx = containerWidth * 0.7
   const gapPx = 16
-  
+
   const centerPosition = (containerWidth / 2) - (cardWidthPx / 2)
   const slideMovement = currentSlide.value * (cardWidthPx + gapPx)
-  
+
   return centerPosition - slideMovement
 })
 
@@ -169,9 +198,9 @@ const isActiveSlide = (repeatIndex: number, index: number) => {
 
 const animateTextChange = (onMidpoint?: () => void) => {
   if (!textOverlay.value) return
-  
+
   const timeline = gsap.timeline()
-  
+
   timeline
     .to(textOverlay.value, {
       y: -50,
@@ -195,7 +224,7 @@ const animateTextChange = (onMidpoint?: () => void) => {
 
 const nextSlide = () => {
   const willReset = currentSlide.value + 1 >= totalSlides * 2
-  
+
   if (willReset) {
     animateTextChange(() => {
       const carousel = carouselRef.value?.querySelector('.flex')
@@ -203,7 +232,7 @@ const nextSlide = () => {
         (carousel as HTMLElement).style.transition = 'none'
       }
       currentSlide.value = totalSlides - 1
-      
+
       requestAnimationFrame(() => {
         if (carousel) {
           (carousel as HTMLElement).style.transition = ''
@@ -220,7 +249,7 @@ const nextSlide = () => {
 
 const prevSlide = () => {
   const willReset = currentSlide.value - 1 < totalSlides
-  
+
   if (willReset) {
     animateTextChange(() => {
       const carousel = carouselRef.value?.querySelector('.flex')
@@ -228,7 +257,7 @@ const prevSlide = () => {
         (carousel as HTMLElement).style.transition = 'none'
       }
       currentSlide.value = totalSlides * 2
-      
+
       requestAnimationFrame(() => {
         if (carousel) {
           (carousel as HTMLElement).style.transition = ''
@@ -262,16 +291,16 @@ let isSnapping = false
 
 const handleScroll = (event: Event) => {
   if (hasSnapped || isSnapping) return
-  
+
   const target = event.target as HTMLElement
   const scrollTop = target.scrollTop
-  
+
   if (scrollTop > 5) {
     isSnapping = true
     hasSnapped = true
-    
+
     const aboutSection = document.querySelector('section')
-    
+
     if (aboutSection) {
       gsap.to(target, {
         duration: 0.6,
@@ -291,15 +320,15 @@ const handleScroll = (event: Event) => {
 
 onMounted(() => {
   startAutoPlay()
-  
+
   if (textOverlay.value) {
     gsap.set(textOverlay.value, { y: 0, opacity: 1 })
   }
-  
+
   const scrollContainer = document.querySelector('.overflow-y-scroll')
   if (scrollContainer) {
     scrollContainer.addEventListener('scroll', handleScroll, { passive: true })
-    
+
     if (skillsSection.value) {
       ScrollTrigger.create({
         trigger: skillsSection.value,
@@ -316,7 +345,7 @@ onMounted(() => {
 
 onUnmounted(() => {
   stopAutoPlay()
-  
+
   const scrollContainer = document.querySelector('.overflow-y-scroll')
   if (scrollContainer) {
     scrollContainer.removeEventListener('scroll', handleScroll)
