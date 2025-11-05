@@ -1,5 +1,5 @@
 <template>
-  <div class="relative h-[400px] rounded-2xl overflow-hidden bg-alphaLightBlack transition-all duration-300" :class="{ 'scale-95 opacity-60': !isActive, 'scale-100 opacity-100': isActive }">
+  <div class="relative h-[400px] max-w-[300px] rounded-2xl overflow-hidden bg-alphaLightBlack transition-all duration-300" :class="{ 'scale-95 opacity-60': !isActive, 'scale-100 opacity-100': isActive }">
     <div class="w-full h-[250px] bg-gradient-to-br from-alphaOrange to-alphaLightBlack flex items-center justify-center">
       <img v-if="imageUrl" :src="imageUrl" :alt="title" class="w-full h-full object-cover" />
       <p v-else class="text-6xl font-bold opacity-20">{{ number }}</p>

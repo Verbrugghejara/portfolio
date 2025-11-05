@@ -5,25 +5,26 @@
     <div class="mx-6 relative">
       <div class="pt-6 mt-6 relative overflow-hidden">
         <p
-          class="font-secondary font-bold bg-alphaOrange absolute px-3 py-0.5 rounded-full tracking-wider right-6 top-0">
+          class="font-secondary text-[clamp(1rem,4vw,1.5rem)] font-bold bg-alphaOrange absolute px-3 py-0.5 rounded-full tracking-wider left-[80%] top-5">
           2026</p>
-        <h1 class="uppercase font-secondary font-bold text-7xl">Portfolio</h1>
+        <h1 class="uppercase font-secondary font-bold text-[clamp(5rem,21vw,12rem)]">Portfolio</h1>
       </div>
-      <div>
-        <p class="text-2xl">Devine student</p>
+      <div class="h-8 flex items-center -mt-6">
+        <p class="text-2xl">{{ displayText }}<span class=" text-alphaOrange font-bold">|</span></p>
       </div>
-      <p class="absolute text-[110px] uppercase font-secondary font-bold text-outline -rotate-15 -left-12 top-10 -z-10">
+      <p class="absolute text-[clamp(7rem,29vw,15rem)] uppercase font-secondary font-bold text-outline -rotate-15 -left-12 top-10 -z-10">
         Developer</p>
-      <div>
-        <p class="leading-relaxed mt-25">
+      <div class="justify-end flex mr-6">
+        <p class="leading-relaxed mt-15">
           <span class="text-alphaOrange font-bold">&lt;span&gt;</span>
           <span class="block"> &nbsp;&nbsp;Frontend Developer <br> &nbsp;&nbsp;in the making. <br>
             &nbsp;&nbsp;Graduating in July 2026</span>
           <span class="text-alphaOrange font-bold">&lt;/span&gt;</span>
         </p>
+
       </div>
     </div>
-    <p class="absolute text-[310px] uppercase font-bold text-outline-xl -left-32 bottom-0 -z-10 -tracking-[0.12em]">
+    <p class="absolute text-[clamp(20rem,80vw,30rem)] uppercase font-bold text-outline-xl -left-32 bottom-0 -z-10 -tracking-[0.12em]">
       &lt;/&gt;</p>
     <div class="absolute right-2 bottom-4">
       <ScrollIndicator />
@@ -32,10 +33,10 @@
   <section class="mx-6">
     <SubTitles mainText="About Me" backgroundText="About" />
     <div class="relative flex justify-center items-center h-96">
-      <div class="absolute top-15 left-[58%] -translate-x-1/2 w-64 h-80 border-6 border-alphaOrange rounded-2xl"></div>
+      <div class="absolute top-13 left-1/2 -translate-x-[calc(50%-2rem)] translate-y-4 w-64 h-80 border-6 border-alphaOrange rounded-2xl"></div>
       <div class="relative w-64 h-80 bg-alphaWhite rounded-2xl shadow-lg"></div>
     </div>
-    <div class="bg-alphaLightBlack rounded-md w-full h-fit mt-8 p-4">
+    <div class="bg-alphaLightBlack rounded-md w-full h-fit mt-8 p-4 max-w-xl mx-auto">
       <div class="flex items-center gap-4">
         <div class="flex gap-1">
           <div class="w-[13px] h-[13px] bg-[#FF5F56] rounded-full"></div>
@@ -85,19 +86,23 @@
       <button class="mt-2 px-4 py-2 bg-alphaOrange uppercase text-white rounded-md">Resume</button>
     </div>
   </section>
-  <section ref="skillsSection" class="mx-6 py-12">
-    <SubTitles mainText="Skills" backgroundText="Skills" />
-    <p class="mb-8">I learned a lot of skills during my studies, so these are the top skills I have acquired:</p>
+  <section ref="skillsSection" class="py-12">
+    <div class="max-w-4xl mx-auto px-6">
+      <SubTitles mainText="Skills" backgroundText="Skills" />
+      <p class="mb-8 text-center max-w-xl mx-auto">I learned a lot of skills during my studies, so these are the top skills I have acquired:</p>
 
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-10">
-      <SkillCard name="HTML" iconUrl="/icons/html.svg" :percentage="skillsVisible ? 90 : 0" />
-      <SkillCard name="JavaScript" iconUrl="/icons/javascript.svg" :percentage="skillsVisible ? 85 : 0" />
-      <SkillCard name="TypeScript" iconUrl="/icons/typescript.svg" :percentage="skillsVisible ? 80 : 0" />
-      <SkillCard name="React" iconUrl="/icons/react.svg" :percentage="skillsVisible ? 75 : 0" />
-      <SkillCard name="Vue" iconUrl="/icons/vue.svg" :percentage="skillsVisible ? 85 : 0" />
-      <SkillCard name="Tailwind" iconUrl="/icons/tailwind.svg" :percentage="skillsVisible ? 90 : 0" />
-      <SkillCard name="CSS" iconUrl="/icons/css.svg" :percentage="skillsVisible ? 88 : 0" />
-      <SkillCard name="Vite" iconUrl="/icons/vite.svg" :percentage="skillsVisible ? 82 : 0" />
+      <div class="flex justify-center">
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-15 justify-items-center">
+          <SkillCard name="HTML" iconUrl="/icons/html.svg" :percentage="skillsVisible ? 90 : 0" />
+          <SkillCard name="JavaScript" iconUrl="/icons/javascript.svg" :percentage="skillsVisible ? 85 : 0" />
+          <SkillCard name="TypeScript" iconUrl="/icons/typescript.svg" :percentage="skillsVisible ? 80 : 0" />
+          <SkillCard name="React" iconUrl="/icons/react.svg" :percentage="skillsVisible ? 75 : 0" />
+          <SkillCard name="Vue" iconUrl="/icons/vue.svg" :percentage="skillsVisible ? 85 : 0" />
+          <SkillCard name="Tailwind" iconUrl="/icons/tailwind.svg" :percentage="skillsVisible ? 90 : 0" />
+          <SkillCard name="CSS" iconUrl="/icons/css.svg" :percentage="skillsVisible ? 88 : 0" />
+          <SkillCard name="Vite" iconUrl="/icons/vite.svg" :percentage="skillsVisible ? 82 : 0" />
+        </div>
+      </div>
     </div>
   </section>
   <section class="pb-20">
@@ -116,8 +121,8 @@
       <div ref="carouselRef" class="overflow-hidden">
         <div class="flex gap-4 transition-transform duration-500 ease-in-out"
           :style="{ transform: `translateX(${translateX}px)` }">
-          <template v-for="repeatIndex in 3" :key="`repeat-${repeatIndex}`">
-            <div v-for="(project, index) in projects" :key="`${repeatIndex}-${project.id}`" class="shrink-0"
+          <template v-for="repeatIndex in 5" :key="`repeat-${repeatIndex}`">
+            <div v-for="(project, index) in projects" :key="`${repeatIndex}-${project.id}`" class="shrink-0 max-w-[300px]"
               :style="{ width: cardWidth }">
               <ProjectCard :number="project.id" :title="project.title" :category="project.category"
                 :description="project.description" :imageUrl="project.imageUrl"
@@ -170,19 +175,28 @@ const carouselRef = ref<HTMLElement | null>(null)
 const textOverlay = ref<HTMLElement | null>(null)
 const skillsSection = ref<HTMLElement | null>(null)
 const skillsVisible = ref(false)
-const currentSlide = ref(projects.length)
+const currentSlide = ref(projects.length * 2)
 const totalSlides = projects.length
+
+const displayText = ref('')
+const texts = ['Devine student', 'Frontend Developer', 'Creative Coder', 'MCT student']
+let textIndex = 0
+let charIndex = 0
+let isDeleting = false
+let typewriterTimeout: number | null = null
 
 const cardWidth = computed(() => {
   if (!carouselRef.value) return '70%'
   const containerWidth = carouselRef.value.offsetWidth
-  return `${containerWidth * 0.7}px`
+  const calculatedWidth = containerWidth * 0.7
+  return `${Math.min(calculatedWidth, 300)}px`
 })
 
 const translateX = computed(() => {
   if (!carouselRef.value) return 0
   const containerWidth = carouselRef.value.offsetWidth
-  const cardWidthPx = containerWidth * 0.7
+  const calculatedWidth = containerWidth * 0.7
+  const cardWidthPx = Math.min(calculatedWidth, 300)
   const gapPx = 16
 
   const centerPosition = (containerWidth / 2) - (cardWidthPx / 2)
@@ -196,79 +210,86 @@ const isActiveSlide = (repeatIndex: number, index: number) => {
   return slideIndex === currentSlide.value
 }
 
-const animateTextChange = (onMidpoint?: () => void) => {
-  if (!textOverlay.value) return
+const animateSlideChange = (direction: 'next' | 'prev') => {
+  if (!textOverlay.value || !carouselRef.value) return
+
+  const carousel = carouselRef.value.querySelector('.flex') as HTMLElement
+  const willReset = direction === 'next' 
+    ? currentSlide.value + 1 >= totalSlides * 4
+    : currentSlide.value - 1 < totalSlides
 
   const timeline = gsap.timeline()
 
-  timeline
-    .to(textOverlay.value, {
-      y: -50,
-      opacity: 0,
-      duration: 0.3,
-      ease: 'power3.in',
-      onComplete: () => {
-        if (onMidpoint) onMidpoint()
+  // Fade out text
+  timeline.to(textOverlay.value, {
+    y: -50,
+    opacity: 0,
+    duration: 0.25,
+    ease: 'power2.inOut'
+  }, 0)
+
+  // Update slide at midpoint when text is invisible
+  timeline.call(() => {
+    currentSlide.value = direction === 'next' ? currentSlide.value + 1 : currentSlide.value - 1
+  }, undefined, 0.25)
+
+  // For reset: after animation, instantly jump back to middle position
+  if (willReset) {
+    timeline.call(() => {
+      if (carousel) {
+        carousel.style.transition = 'none'
+        currentSlide.value = direction === 'next' ? totalSlides * 2 : totalSlides * 3 - 1
+        void carousel?.offsetHeight
+        requestAnimationFrame(() => {
+          if (carousel) carousel.style.transition = ''
+        })
       }
-    })
-    .set(textOverlay.value, {
-      y: 50
-    })
-    .to(textOverlay.value, {
-      y: 0,
-      opacity: 1,
-      duration: 0.6,
-      ease: 'power3.out'
-    })
+    }, undefined, 0.5)
+  }
+
+  // Fade in text
+  timeline.set(textOverlay.value, { y: 50 }, 0.25)
+  timeline.to(textOverlay.value, {
+    y: 0,
+    opacity: 1,
+    duration: 0.25,
+    ease: 'power2.inOut'
+  }, 0.25)
 }
 
 const nextSlide = () => {
-  const willReset = currentSlide.value + 1 >= totalSlides * 2
-
-  if (willReset) {
-    animateTextChange(() => {
-      const carousel = carouselRef.value?.querySelector('.flex')
-      if (carousel) {
-        (carousel as HTMLElement).style.transition = 'none'
-      }
-      currentSlide.value = totalSlides - 1
-
-      requestAnimationFrame(() => {
-        if (carousel) {
-          (carousel as HTMLElement).style.transition = ''
-        }
-        currentSlide.value++
-      })
-    })
-  } else {
-    animateTextChange(() => {
-      currentSlide.value++
-    })
-  }
+  animateSlideChange('next')
 }
 
 const prevSlide = () => {
-  const willReset = currentSlide.value - 1 < totalSlides
+  animateSlideChange('prev')
+}
 
-  if (willReset) {
-    animateTextChange(() => {
-      const carousel = carouselRef.value?.querySelector('.flex')
-      if (carousel) {
-        (carousel as HTMLElement).style.transition = 'none'
-      }
-      currentSlide.value = totalSlides * 2
+// Touch/Swipe functionality
+let touchStartX = 0
+let touchEndX = 0
 
-      requestAnimationFrame(() => {
-        if (carousel) {
-          (carousel as HTMLElement).style.transition = ''
-        }
-        currentSlide.value--
-      })
-    })
-  } else {
-    animateTextChange(() => {
-      currentSlide.value--
-    })
+const handleTouchStart = (e: TouchEvent) => {
+  touchStartX = e.changedTouches[0].screenX
+}
+
+const handleTouchEnd = (e: TouchEvent) => {
+  touchEndX = e.changedTouches[0].screenX
+  handleSwipe()
+}
+
+const handleSwipe = () => {
+  const swipeThreshold = 50
+  const diff = touchStartX - touchEndX
+
+  if (Math.abs(diff) > swipeThreshold) {
+    if (diff > 0) {
+      // Swiped left - next slide
+      nextSlide()
+    } else {
+      // Swiped right - prev slide
+      prevSlide()
+    }
   }
 }
 
@@ -283,6 +304,35 @@ const startAutoPlay = () => {
 const stopAutoPlay = () => {
   if (autoPlayInterval) {
     clearInterval(autoPlayInterval)
+  }
+}
+
+const typeWriter = () => {
+  const currentText = texts[textIndex]
+  
+  if (!isDeleting && charIndex <= currentText.length) {
+    displayText.value = currentText.substring(0, charIndex)
+    charIndex++
+    typewriterTimeout = window.setTimeout(typeWriter, 100)
+  } else if (!isDeleting && charIndex > currentText.length) {
+    typewriterTimeout = window.setTimeout(() => {
+      isDeleting = true
+      typeWriter()
+    }, 2000)
+  } else if (isDeleting && charIndex > 0) {
+    displayText.value = currentText.substring(0, charIndex - 1)
+    charIndex--
+    typewriterTimeout = window.setTimeout(typeWriter, 50)
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false
+    textIndex = (textIndex + 1) % texts.length
+    typewriterTimeout = window.setTimeout(typeWriter, 500)
+  }
+}
+
+const stopTypewriter = () => {
+  if (typewriterTimeout) {
+    clearTimeout(typewriterTimeout)
   }
 }
 
@@ -320,9 +370,16 @@ const handleScroll = (event: Event) => {
 
 onMounted(() => {
   startAutoPlay()
+  typeWriter()
 
   if (textOverlay.value) {
     gsap.set(textOverlay.value, { y: 0, opacity: 1 })
+  }
+
+  // Add touch event listeners for swipe
+  if (carouselRef.value) {
+    carouselRef.value.addEventListener('touchstart', handleTouchStart, { passive: true })
+    carouselRef.value.addEventListener('touchend', handleTouchEnd, { passive: true })
   }
 
   const scrollContainer = document.querySelector('.overflow-y-scroll')
@@ -345,6 +402,13 @@ onMounted(() => {
 
 onUnmounted(() => {
   stopAutoPlay()
+  stopTypewriter()
+
+  // Remove touch event listeners
+  if (carouselRef.value) {
+    carouselRef.value.removeEventListener('touchstart', handleTouchStart)
+    carouselRef.value.removeEventListener('touchend', handleTouchEnd)
+  }
 
   const scrollContainer = document.querySelector('.overflow-y-scroll')
   if (scrollContainer) {
