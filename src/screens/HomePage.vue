@@ -5,19 +5,19 @@
     <div class="mx-6 relative">
       <div class="pt-6 mt-6 relative overflow-hidden">
         <p
-          class="font-secondary text-[clamp(1rem,4vw,1.5rem)] font-bold bg-alphaOrange absolute px-3 py-0.5 rounded-full tracking-wider left-[80%] top-5">
+          class="font-secondary text-[clamp(1rem,4vw,1.5rem)] font-bold bg-alphaOrange absolute px-3 py-0.5 rounded-full tracking-wider left-[80%] top-6 sm:top-8">
           2026</p>
         <h1 class="uppercase font-secondary font-bold text-[clamp(5rem,21vw,12rem)]">Portfolio</h1>
       </div>
-      <div class="h-8 flex items-center -mt-6">
+      <div class="h-8 flex items-center -mt-6 sm:-mt-10">
         <p class="text-2xl">{{ displayText }}<span class=" text-alphaOrange font-bold">|</span></p>
       </div>
       <p class="absolute text-[clamp(7rem,29vw,15rem)] uppercase font-secondary font-bold text-outline -rotate-15 -left-12 top-10 -z-10">
         Developer</p>
-      <div class="justify-end flex mr-6">
-        <p class="leading-relaxed mt-15">
+      <div class="justify-end flex mr-6 sm:text-xl">
+        <p class="leading-relaxed mt-15 ">
           <span class="text-alphaOrange font-bold">&lt;span&gt;</span>
-          <span class="block"> &nbsp;&nbsp;Frontend Developer <br> &nbsp;&nbsp;in the making. <br>
+          <span class="block"> &nbsp;&nbsp;Frontend Developer <br class="sm:hidden"> <span class="sm:hidden">&nbsp;&nbsp;</span>  in the making. <br>
             &nbsp;&nbsp;Graduating in July 2026</span>
           <span class="text-alphaOrange font-bold">&lt;/span&gt;</span>
         </p>
@@ -26,7 +26,7 @@
     </div>
     <p class="absolute text-[clamp(20rem,80vw,30rem)] uppercase font-bold text-outline-xl -left-32 bottom-0 -z-10 -tracking-[0.12em]">
       &lt;/&gt;</p>
-    <div class="absolute right-2 bottom-4">
+    <div class="absolute right-2 sm:right-4 bottom-4">
       <ScrollIndicator />
     </div>
   </header>
@@ -70,7 +70,7 @@
 };
   </pre>
 </div>
-<div class="flex gap-2 items-center justify-center mt-4">
+<div class="flex gap-2 items-center justify-center mt-4 sm:hidden">
 <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
 </svg>
