@@ -1,19 +1,8 @@
 <template>
-    <button
-        class="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 border-2 border-alphaWhite bg-alphaLightBlack rounded-md px-4 py-2 flex items-center gap-3">
-        <div class="flex flex-col gap-1">
-            <span class="w-5 h-0.5 bg-alphaWhite"></span>
-            <span class="w-5 h-0.5 bg-alphaWhite"></span>
-            <span class="w-5 h-0.5 bg-alphaWhite"></span>
-        </div>
-        <span class="text-lg">Menu</span>
-    </button>
+    <MenuButton />
 
-    <!-- Header Section -->
     <div class="snap-start flex flex-col min-h-screen relative">
-        <div class="bg-alphaLightBlack justify-center items-center flex p-6">
-            <p class="uppercase font-bold text-2xl">Jara verbrugghe</p>
-        </div>
+        <HeaderBar />
         <div class="-mt-12">
             <SubTitles mainText="My Projects" backgroundText="Projects" />
         </div>
@@ -30,11 +19,8 @@
                 <p>Motion</p>
             </div>
         </div>
-        <div class="uppercase flex flex-col items-center absolute top-2/3 left-1/2 -translate-x-1/2">
-            <p>scroll down</p>
-            <svg class="w-4 h-6" viewBox="0 0 16 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8 0L8 22M8 22L1 15M8 22L15 15" stroke="currentColor" stroke-width="2" />
-            </svg>
+        <div class="absolute top-2/3 left-1/2 -translate-x-1/2">
+            <ScrollIndicator />
         </div>
     </div>
     <div>
@@ -56,48 +42,17 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 import gsap from 'gsap'
-// @ts-ignore 
+import { projects } from '../data/projects'
+// @ts-ignore
+import MenuButton from '../components/MenuButton.vue'
+// @ts-ignore
+import HeaderBar from '../components/HeaderBar.vue'
+// @ts-ignore
+import ScrollIndicator from '../components/ScrollIndicator.vue'
+// @ts-ignore
 import SubTitles from '../components/SubTitles.vue'
-// @ts-ignore 
+// @ts-ignore
 import ProjectCard from '../components/ProjectCard.vue'
-
-const projects = [
-    {
-        id: 1,
-        title: 'The easy cat set',
-        category: 'IoT',
-        description: 'An IoT solution to make pet care easier',
-        imageUrl: ''
-    },
-    {
-        id: 2,
-        title: 'Project Name 2',
-        category: 'Web App',
-        description: 'A modern web application',
-        imageUrl: ''
-    },
-    {
-        id: 3,
-        title: 'Project Name 3',
-        category: 'Mobile',
-        description: 'Mobile-first design',
-        imageUrl: ''
-    },
-    {
-        id: 4,
-        title: 'Project Name 4',
-        category: 'UI/UX',
-        description: 'Clean interface design',
-        imageUrl: ''
-    },
-    {
-        id: 5,
-        title: 'Project Name 5',
-        category: 'Full Stack',
-        description: 'End-to-end solution',
-        imageUrl: ''
-    }
-]
 
 const projectRefs = ref<any[]>([])
 const textRefs = ref<any[]>([])
