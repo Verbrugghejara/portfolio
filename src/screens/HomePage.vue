@@ -143,9 +143,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue'
-import SubTitles from '../components/SubTitles.vue'
-import SkillCard from '../components/SkillCard.vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'// @ts-ignore 
+import SubTitles from '../components/SubTitles.vue' // @ts-ignore 
+import SkillCard from '../components/SkillCard.vue' // @ts-ignore 
 import ProjectCard from '../components/ProjectCard.vue'
 
 const projects = [
