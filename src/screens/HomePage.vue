@@ -1,8 +1,27 @@
 <template>
-  <MenuButton />
+  <MenuButton class="lg:hidden"/>
   <header class="relative min-h-screen">
     <HeaderBar class="lg:hidden"/>
-    <div class="mx-6 md:mx-12 relative">
+    <nav class="mx-6 md:mx-12 lg:mx-32 justify-between hidden lg:flex items-center py-4 text-2xl uppercase">
+      <p class=" font-bold ">Jara Verbrugghe</p>
+        <ul class="">
+          <li class="gap-20 flex">
+            <a href="#aboutMe" class="relative group">
+              <span class="relative z-10">About Me</span>
+              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-alphaOrange transition-all duration-300 ease-out group-hover:w-full"></span>
+            </a>
+            <a href="#skills" class="relative group">
+              <span class="relative z-10">Skills</span>
+              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-alphaOrange transition-all duration-300 ease-out group-hover:w-full"></span>
+            </a>
+            <a href="#projects" class="relative group">
+              <span class="relative z-10">Projects</span>
+              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-alphaOrange transition-all duration-300 ease-out group-hover:w-full"></span>
+            </a>
+          </li>
+        </ul>
+    </nav>
+    <div class="mx-6 md:mx-12 lg:mx-32 relative">
       <div class="pt-6 mt-6 relative overflow-hidden w-fit pr-[35px] lg:pr-[90px]">
         <p
           class="font-secondary text-[clamp(1rem,4vw,1.5rem)] font-bold bg-alphaOrange absolute px-3 py-0.5 rounded-full tracking-wider right-0 top-6 lg:top-32 sm:top-8 md:top-11">
@@ -17,7 +36,7 @@
         <div class="border-b-2 w-[30%] mr-2 ml-2"></div>
         <p class="text-2xl">{{ displayText }}<span class=" text-alphaOrange font-bold">|</span></p>
       </div>
-      <p class="absolute text-[clamp(7rem,29vw,36rem)] uppercase font-secondary font-bold text-outline -rotate-15 -left-[10%] top-10 -z-10">
+      <p class="absolute text-[clamp(7rem,29vw,36rem)] uppercase font-secondary font-bold text-outline -rotate-15 -left-[15%] top-10 -z-10">
         Developer</p>
       <div class="justify-end flex mr-6 sm:text-xl">
         <p class="leading-relaxed mt-15 lg:mt-30 2xl:mr-30">
@@ -35,7 +54,7 @@
       <ScrollIndicator />
     </div>
   </header>
-  <section class="mx-6 md:mx-12 lg:mx-16 2xl:mx-32">
+  <section id="aboutMe" class="mx-6 md:mx-12 lg:mx-16 2xl:mx-32">
     <SubTitles mainText="About Me" backgroundText="About" />
     <div class="lg:flex lg:flex-row-reverse lg:justify-center lg:gap-[5%] xl:gap-[15%] lg:items-center">
       <div>
@@ -45,7 +64,7 @@
         </div>
         <div class="mt-12 text-center font-bold hidden lg:block">
         <p>Want to know more about me?</p>
-        <button class="mt-2 px-4 py-2 bg-alphaOrange uppercase text-white rounded-md">Resume</button>
+        <button class="mt-2 px-4 py-2 bg-alphaOrange hover:bg-alphaOrangeHover cursor-pointer uppercase text-white rounded-md">Resume</button>
       </div>
 
       </div>
@@ -101,7 +120,7 @@
       <button class="mt-2 px-4 py-2 bg-alphaOrange uppercase text-white rounded-md">Resume</button>
     </div>
   </section>
-  <section ref="skillsSection" class="py-12 ">
+  <section id="skills" ref="skillsSection" class="py-12 ">
     <div class="max-w-4xl mx-auto px-6">
       <SubTitles mainText="Skills" backgroundText="Skills" />
       <p class="mb-8 text-center max-w-xl mx-auto">I learned a lot of skills during my studies, so these are the top skills I have acquired:</p>
@@ -120,10 +139,9 @@
       </div>
     </div>
   </section>
-  <section class="pb-20 2xl:mx-32">
+  <section id="projects" class="pb-20 2xl:mx-32 ">
     <div class="mx-6 md:mx-12">
       <SubTitles mainText="My Projects" backgroundText="Projects" />
-      <p class="mb-8">Here are my top 5 projects:</p>
     </div>
 
     <div class="relative overflow-hidden">
@@ -138,11 +156,12 @@
           :style="{ transform: `translateX(${translateX}px)`, gap: '0.25rem' }">
           <template v-for="repeatIndex in 5" :key="`repeat-${repeatIndex}`">
             <div v-for="(project, index) in projects" :key="`${repeatIndex}-${project.id}`" 
-              class="shrink-0 max-w-[300px] transition-all duration-500"
+              class="shrink-0 max-w-[300px]"
               :style="{ 
                 width: cardWidth, 
                 transform: getCardTransform(repeatIndex, index),
-                opacity: getCardOpacity(repeatIndex, index)
+                opacity: getCardOpacity(repeatIndex, index),
+                transition: 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out'
               }">
               <ProjectCard :number="project.id" :title="project.title" :category="project.category"
                 :description="project.description" :imageUrl="project.imageUrl"
@@ -153,13 +172,13 @@
       </div>
 
       <button @click="prevSlide"
-        class="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-alphaOrange rounded-full flex items-center justify-center hover:bg-opacity-80 transition-all z-10">
+        class="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-alphaOrange hover:bg-alphaOrangeHover rounded-full flex items-center justify-center transition-all z-10 cursor-pointer">
         <svg class="w-6 h-6 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>
       </button>
       <button @click="nextSlide"
-        class="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-alphaOrange rounded-full flex items-center justify-center hover:bg-opacity-80 transition-all z-10">
+        class="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-alphaOrange hover:bg-alphaOrangeHover rounded-full flex items-center justify-center transition-all z-10 cursor-pointer">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>

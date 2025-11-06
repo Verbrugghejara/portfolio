@@ -11,6 +11,7 @@
     --color-alphaLightBlack: #282723;
     --color-alphaWhite: #FEF3F0;
     --color-alphaOrange: #D84E2C;
+    --color-alphaOrangeHover: #B43E20;
 }
 
 html {
@@ -48,3 +49,8 @@ body {
     display: none;
 }
 
+.perspective-1000 {
+    perspective: 1000px;
+    perspective-origin: center center;
+    transform-style: preserve-3d;
+}
