@@ -14,7 +14,7 @@
       </div>
       <div class="h-8 items-center -mt-6 sm:-mt-10 hidden lg:flex">
         <p class="uppercase text-2xl">Jara verbrugghe</p>
-        <div class="border-b-2 w-[45%] mr-2 ml-2"></div>
+        <div class="border-b-2 w-[30%] mr-2 ml-2"></div>
         <p class="text-2xl">{{ displayText }}<span class=" text-alphaOrange font-bold">|</span></p>
       </div>
       <p class="absolute text-[clamp(7rem,29vw,36rem)] uppercase font-secondary font-bold text-outline -rotate-15 -left-[10%] top-10 -z-10">
