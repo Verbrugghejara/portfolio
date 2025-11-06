@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center gap-3">
+  <div class="lg:hidden fixed bottom-5 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center gap-3">
     <!-- Menu Items -->
     <Transition name="menu-items">
       <div v-if="isOpen" class="flex flex-col gap-3 mb-2">
@@ -22,7 +22,7 @@
       class="border-2 border-alphaWhite bg-alphaLightBlack rounded-md px-4 py-2 flex items-center gap-3 transition-all duration-300 hover:border-alphaOrange"
       :class="{ 'bg-alphaOrange border-alphaOrange': isOpen }"
     >
-      <div class="flex flex-col w-5 h-4 justify-center relative">
+      <div v-if="title === 'Menu'" class="flex flex-col w-5 h-4 justify-center relative">
         <span 
           class="w-5 h-0.5 bg-alphaWhite transition-all duration-300 absolute left-0"
           :class="isOpen ? 'top-1/2 -translate-y-1/2 rotate-45' : 'top-0'"
@@ -36,12 +36,17 @@
           :class="isOpen ? 'top-1/2 -translate-y-1/2 -rotate-45' : 'bottom-0'"
         ></span>
       </div>
-      <span class="text-lg">{{ isOpen ? 'Close' : 'Menu' }}</span>
+      
+      <span class="text-lg" v-if="title === 'Menu'">{{ isOpen ? 'Close' : 'Menu' }}</span>
+      <span class="text-lg" v-else>{{ title }}</span>
     </button>
   </div>
 </template>
 
 <script setup lang="ts">
+defineProps<{
+  title: string
+}>()
 import { ref } from 'vue'
 
 const isOpen = ref(false)

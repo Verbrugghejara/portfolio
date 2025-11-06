@@ -1,26 +1,8 @@
 <template>
-  <MenuButton class="lg:hidden"/>
+  <MenuButton title="Menu"/>
   <header class="relative min-h-screen">
     <HeaderBar class="lg:hidden"/>
-    <nav class="mx-6 md:mx-12 lg:mx-32 justify-between hidden lg:flex items-center py-4 text-2xl uppercase">
-      <p class=" font-bold ">Jara Verbrugghe</p>
-        <ul class="">
-          <li class="gap-20 flex">
-            <a href="#aboutMe" class="relative group">
-              <span class="relative z-10">About Me</span>
-              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-alphaOrange transition-all duration-300 ease-out group-hover:w-full"></span>
-            </a>
-            <a href="#skills" class="relative group">
-              <span class="relative z-10">Skills</span>
-              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-alphaOrange transition-all duration-300 ease-out group-hover:w-full"></span>
-            </a>
-            <a href="#projects" class="relative group">
-              <span class="relative z-10">Projects</span>
-              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-alphaOrange transition-all duration-300 ease-out group-hover:w-full"></span>
-            </a>
-          </li>
-        </ul>
-    </nav>
+    
     <div class="mx-6 md:mx-12 lg:mx-32 relative">
       <div class="pt-6 mt-6 relative overflow-hidden w-fit pr-[35px] lg:pr-[90px]">
         <p
@@ -127,14 +109,14 @@
 
       <div class="flex justify-center">
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-15 justify-items-center">
-          <SkillCard name="HTML" iconUrl="/icons/html.svg" :percentage="skillsVisible ? 90 : 0" />
-          <SkillCard name="JavaScript" iconUrl="/icons/javascript.svg" :percentage="skillsVisible ? 85 : 0" />
-          <SkillCard name="TypeScript" iconUrl="/icons/typescript.svg" :percentage="skillsVisible ? 80 : 0" />
-          <SkillCard name="React" iconUrl="/icons/react.svg" :percentage="skillsVisible ? 75 : 0" />
-          <SkillCard name="Vue" iconUrl="/icons/vue.svg" :percentage="skillsVisible ? 85 : 0" />
-          <SkillCard name="Tailwind" iconUrl="/icons/tailwind.svg" :percentage="skillsVisible ? 90 : 0" />
-          <SkillCard name="CSS" iconUrl="/icons/css.svg" :percentage="skillsVisible ? 88 : 0" />
-          <SkillCard name="Vite" iconUrl="/icons/vite.svg" :percentage="skillsVisible ? 82 : 0" />
+          <SkillCard name="HTML" iconUrl="/portfolio/icons/html.svg" :percentage="skillsVisible ? 90 : 0" />
+          <SkillCard name="JavaScript" iconUrl="/portfolio/icons/javascript.svg" :percentage="skillsVisible ? 85 : 0" />
+          <SkillCard name="TypeScript" iconUrl="/portfolio/icons/typescript.svg" :percentage="skillsVisible ? 80 : 0" />
+          <SkillCard name="React" iconUrl="/portfolio/icons/react.svg" :percentage="skillsVisible ? 75 : 0" />
+          <SkillCard name="Vue" iconUrl="/portfolio/icons/vue.svg" :percentage="skillsVisible ? 85 : 0" />
+          <SkillCard name="Tailwind" iconUrl="/portfolio/icons/tailwind.svg" :percentage="skillsVisible ? 90 : 0" />
+          <SkillCard name="CSS" iconUrl="/portfolio/icons/css.svg" :percentage="skillsVisible ? 88 : 0" />
+          <SkillCard name="Vite" iconUrl="/portfolio/icons/vitejs.svg" :percentage="skillsVisible ? 82 : 0" />
         </div>
       </div>
     </div>
