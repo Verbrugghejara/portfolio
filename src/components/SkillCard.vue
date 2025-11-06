@@ -40,7 +40,7 @@
               class="transition-all duration-1000"
             />
           </svg>
-          <div class="absolute inset-3 bg-alphaLightBlack rounded-lg flex flex-col items-center justify-center">
+          <div class="absolute inset-3 rounded-lg flex flex-col items-center justify-center">
             <p class="text-4xl font-bold text-alphaOrange">{{ percentage }}%</p>
           </div>
         </div>
