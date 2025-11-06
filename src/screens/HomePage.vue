@@ -1,21 +1,26 @@
 <template>
   <MenuButton />
   <header class="relative min-h-screen">
-    <HeaderBar />
-    <div class="mx-6 relative">
-      <div class="pt-6 mt-6 relative overflow-hidden">
+    <HeaderBar class="lg:hidden"/>
+    <div class="mx-6 md:mx-12 relative">
+      <div class="pt-6 mt-6 relative overflow-hidden w-fit pr-[35px] lg:pr-[90px]">
         <p
-          class="font-secondary text-[clamp(1rem,4vw,1.5rem)] font-bold bg-alphaOrange absolute px-3 py-0.5 rounded-full tracking-wider left-[80%] top-6 sm:top-8">
+          class="font-secondary text-[clamp(1rem,4vw,1.5rem)] font-bold bg-alphaOrange absolute px-3 py-0.5 rounded-full tracking-wider right-0 top-6 lg:top-32 sm:top-8 md:top-11">
           2026</p>
-        <h1 class="uppercase font-secondary font-bold text-[clamp(5rem,21vw,12rem)]">Portfolio</h1>
+        <h1 class="uppercase font-secondary font-bold text-[clamp(5rem,21vw,16rem)]">Portfolio</h1>
       </div>
-      <div class="h-8 flex items-center -mt-6 sm:-mt-10">
+      <div class="h-8 flex items-center -mt-6 sm:-mt-10 lg:hidden">
         <p class="text-2xl">{{ displayText }}<span class=" text-alphaOrange font-bold">|</span></p>
       </div>
-      <p class="absolute text-[clamp(7rem,29vw,15rem)] uppercase font-secondary font-bold text-outline -rotate-15 -left-12 top-10 -z-10">
+      <div class="h-8 items-center -mt-6 sm:-mt-10 hidden lg:flex">
+        <p class="uppercase text-2xl">Jara verbrugghe</p>
+        <div class="border-b-2 w-[45%] mr-2 ml-2"></div>
+        <p class="text-2xl">{{ displayText }}<span class=" text-alphaOrange font-bold">|</span></p>
+      </div>
+      <p class="absolute text-[clamp(7rem,29vw,36rem)] uppercase font-secondary font-bold text-outline -rotate-15 -left-[10%] top-10 -z-10">
         Developer</p>
       <div class="justify-end flex mr-6 sm:text-xl">
-        <p class="leading-relaxed mt-15 ">
+        <p class="leading-relaxed mt-15 lg:mt-30 2xl:mr-30">
           <span class="text-alphaOrange font-bold">&lt;span&gt;</span>
           <span class="block"> &nbsp;&nbsp;Frontend Developer <br class="sm:hidden"> <span class="sm:hidden">&nbsp;&nbsp;</span>  in the making. <br>
             &nbsp;&nbsp;Graduating in July 2026</span>
@@ -24,75 +29,85 @@
 
       </div>
     </div>
-    <p class="absolute text-[clamp(20rem,80vw,30rem)] uppercase font-bold text-outline-xl -left-32 bottom-0 -z-10 -tracking-[0.12em]">
+    <p class="absolute lg:hidden text-[clamp(20rem,80vw,50rem)] uppercase font-bold text-outline-xl -left-[35%] bottom-0 -z-10 -tracking-[0.12em]">
       &lt;/&gt;</p>
-    <div class="absolute right-2 sm:right-4 bottom-4">
+    <div class="absolute right-2 sm:right-4 bottom-4 lg:bottom-9">
       <ScrollIndicator />
     </div>
   </header>
-  <section class="mx-6">
+  <section class="mx-6 md:mx-12 lg:mx-16 2xl:mx-32">
     <SubTitles mainText="About Me" backgroundText="About" />
-    <div class="relative flex justify-center items-center h-96">
-      <div class="absolute top-13 left-1/2 -translate-x-[calc(50%-2rem)] translate-y-4 w-64 h-80 border-6 border-alphaOrange rounded-2xl"></div>
-      <div class="relative w-64 h-80 bg-alphaWhite rounded-2xl shadow-lg"></div>
-    </div>
-    <div class="bg-alphaLightBlack rounded-md w-full h-fit mt-8 p-4 max-w-xl mx-auto">
-      <div class="flex items-center gap-4">
-        <div class="flex gap-1">
-          <div class="w-[13px] h-[13px] bg-[#FF5F56] rounded-full"></div>
-          <div class="w-[13px] h-[13px] bg-[#FFBD2E] rounded-full"></div>
-          <div class="w-[13px] h-[13px] bg-[#27C93F] rounded-full"></div>
+    <div class="lg:flex lg:flex-row-reverse lg:justify-center lg:gap-[5%] xl:gap-[15%] lg:items-center">
+      <div>
+        <div class="relative flex justify-center items-center h-96">
+          <div class="absolute top-13 left-1/2 -translate-x-[calc(50%-2rem)] translate-y-4 w-64 h-80 border-6 border-alphaOrange rounded-2xl"></div>
+          <div class="relative w-64 h-80 bg-alphaWhite rounded-2xl shadow-lg"></div>
         </div>
-        <p>about-me.js</p>
+        <div class="mt-12 text-center font-bold hidden lg:block">
+        <p>Want to know more about me?</p>
+        <button class="mt-2 px-4 py-2 bg-alphaOrange uppercase text-white rounded-md">Resume</button>
       </div>
-      <div class="mt-4 w-full overflow-x-auto">
-  <pre class=" text-white p-4 rounded-2xl font-mono leading-relaxed min-w-[500px]">
-<span class="text-alphaOrange">const</span> Jara = {
-  version: <span class="text-alphaOrange">"2002.03.29"</span>,
-  location: [<span class="text-alphaOrange">"Ruiselede", "Belgium"</span>],
-  languages: [<span class="text-alphaOrange">"Dutch", "English", "HTML", "CSS", "JS"</span>],
-  status: <span class="text-alphaOrange">"Student"</span>,
-  education: [
-    {
-      program: <span class="text-alphaOrange">"Multimedia and Creative Technologies (MCT)"</span>,
-      university: <span class="text-alphaOrange">"Howest University of Applied Sciences"</span>,
-      graduated: <span class="text-alphaOrange">"2023"</span>
-    },
-    {
-      program: <span class="text-alphaOrange">"Digital Design and Development (DEVINE)"</span>,
-      university: <span class="text-alphaOrange">"Howest University of Applied Sciences"</span>,
-      graduating: <span class="text-alphaOrange">"2026"</span>
-    }
-  ],
-  likes: [<span class="text-alphaOrange">"Clean design", "Night coding"</span>],
-  dislikes: [<span class="text-alphaOrange">"Clunky UX"</span>],
-  hobbies: [<span class="text-alphaOrange">"Soccer", "Gaming", "Hanging out with friends"</span>]
-};
-  </pre>
-</div>
-<div class="flex gap-2 items-center justify-center mt-4 sm:hidden">
-<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-</svg>
-<p class="uppercase">scroll horizontal</p>
-<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-</svg>
-</div>
+
+      </div>
+      <div class="bg-alphaLightBlack rounded-md w-full h-fit mt-8 p-4 max-w-[600px] mx-auto lg:mx-0">
+        <div class="flex items-center gap-4">
+          <div class="flex gap-1">
+            <div class="w-[13px] h-[13px] bg-[#FF5F56] rounded-full"></div>
+            <div class="w-[13px] h-[13px] bg-[#FFBD2E] rounded-full"></div>
+            <div class="w-[13px] h-[13px] bg-[#27C93F] rounded-full"></div>
+          </div>
+          <p>about-me.js</p>
+        </div>
+        <div class="mt-4 w-full overflow-x-auto">
+    <pre class=" text-white p-4 rounded-2xl font-mono leading-relaxed min-w-[500px]">
+  <span class="text-alphaOrange">const</span> Jara = {
+    version: <span class="text-alphaOrange">"2002.03.29"</span>,
+    location: [<span class="text-alphaOrange">"Ruiselede", "Belgium"</span>],
+    languages: [<span class="text-alphaOrange">"Dutch", "English", "HTML", "CSS", "JS"</span>],
+    status: <span class="text-alphaOrange">"Student"</span>,
+    education: [
+      {
+        program: <span class="text-alphaOrange">"Multimedia and Creative Technologies (MCT)"</span>,
+        university: <span class="text-alphaOrange">"Howest University of Applied Sciences"</span>,
+        graduated: <span class="text-alphaOrange">"2023"</span>
+      },
+      {
+        program: <span class="text-alphaOrange">"Digital Design and Development (DEVINE)"</span>,
+        university: <span class="text-alphaOrange">"Howest University of Applied Sciences"</span>,
+        graduating: <span class="text-alphaOrange">"2026"</span>
+      }
+    ],
+    likes: [<span class="text-alphaOrange">"Clean design", "Night coding"</span>],
+    dislikes: [<span class="text-alphaOrange">"Clunky UX"</span>],
+    hobbies: [<span class="text-alphaOrange">"Soccer", "Gaming", "Hanging out with friends"</span>]
+  };
+    </pre>
+  </div>
+  <div class="flex gap-2 items-center justify-center mt-4 sm:hidden">
+  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+  </svg>
+  <p class="uppercase">scroll horizontal</p>
+  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+  </svg>
+  </div>
+  
+      </div>
 
     </div>
-    <div class="mt-12 text-center font-bold">
+    <div class="mt-12 text-center font-bold lg:hidden">
       <p>Want to know more about me?</p>
       <button class="mt-2 px-4 py-2 bg-alphaOrange uppercase text-white rounded-md">Resume</button>
     </div>
   </section>
-  <section ref="skillsSection" class="py-12">
+  <section ref="skillsSection" class="py-12 ">
     <div class="max-w-4xl mx-auto px-6">
       <SubTitles mainText="Skills" backgroundText="Skills" />
       <p class="mb-8 text-center max-w-xl mx-auto">I learned a lot of skills during my studies, so these are the top skills I have acquired:</p>
 
       <div class="flex justify-center">
-        <div class="grid grid-cols-2 sm:grid-cols-3 gap-15 justify-items-center">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-15 justify-items-center">
           <SkillCard name="HTML" iconUrl="/icons/html.svg" :percentage="skillsVisible ? 90 : 0" />
           <SkillCard name="JavaScript" iconUrl="/icons/javascript.svg" :percentage="skillsVisible ? 85 : 0" />
           <SkillCard name="TypeScript" iconUrl="/icons/typescript.svg" :percentage="skillsVisible ? 80 : 0" />
@@ -105,8 +120,8 @@
       </div>
     </div>
   </section>
-  <section class="pb-20">
-    <div class="mx-6">
+  <section class="pb-20 2xl:mx-32">
+    <div class="mx-6 md:mx-12">
       <SubTitles mainText="My Projects" backgroundText="Projects" />
       <p class="mb-8">Here are my top 5 projects:</p>
     </div>
@@ -118,12 +133,17 @@
         <p class="text-xl text-alphaOrange mb-2">{{ projects[currentSlide % totalSlides].category }}</p>
       </div>
 
-      <div ref="carouselRef" class="overflow-hidden">
-        <div class="flex gap-4 transition-transform duration-500 ease-in-out"
-          :style="{ transform: `translateX(${translateX}px)` }">
+      <div ref="carouselRef" class="overflow-hidden ">
+        <div class="flex transition-transform duration-500 ease-in-out  "
+          :style="{ transform: `translateX(${translateX}px)`, gap: '0.25rem' }">
           <template v-for="repeatIndex in 5" :key="`repeat-${repeatIndex}`">
-            <div v-for="(project, index) in projects" :key="`${repeatIndex}-${project.id}`" class="shrink-0 max-w-[300px]"
-              :style="{ width: cardWidth }">
+            <div v-for="(project, index) in projects" :key="`${repeatIndex}-${project.id}`" 
+              class="shrink-0 max-w-[300px] transition-all duration-500"
+              :style="{ 
+                width: cardWidth, 
+                transform: getCardTransform(repeatIndex, index),
+                opacity: getCardOpacity(repeatIndex, index)
+              }">
               <ProjectCard :number="project.id" :title="project.title" :category="project.category"
                 :description="project.description" :imageUrl="project.imageUrl"
                 :isActive="isActiveSlide(repeatIndex, index)" />
@@ -197,10 +217,13 @@ const translateX = computed(() => {
   const containerWidth = carouselRef.value.offsetWidth
   const calculatedWidth = containerWidth * 0.7
   const cardWidthPx = Math.min(calculatedWidth, 300)
-  const gapPx = 16
+  const gapPx = 4 // 0.25rem = 4px
+  
+  // Clean calculation without compensation
+  const effectiveSpacing = cardWidthPx + gapPx
 
   const centerPosition = (containerWidth / 2) - (cardWidthPx / 2)
-  const slideMovement = currentSlide.value * (cardWidthPx + gapPx)
+  const slideMovement = currentSlide.value * effectiveSpacing
 
   return centerPosition - slideMovement
 })
@@ -208,6 +231,48 @@ const translateX = computed(() => {
 const isActiveSlide = (repeatIndex: number, index: number) => {
   const slideIndex = (repeatIndex - 1) * totalSlides + index
   return slideIndex === currentSlide.value
+}
+
+const getCardOpacity = (repeatIndex: number, index: number) => {
+  const slideIndex = (repeatIndex - 1) * totalSlides + index
+  const distance = Math.abs(slideIndex - currentSlide.value)
+  
+  // Show only 5 cards: active + 2 on each side
+  if (distance === 0) {
+    return 1 // Active card
+  } else if (distance === 1) {
+    return 1 // Adjacent cards - fully visible
+  } else if (distance === 2) {
+    return 0.9 // Second level cards
+  } else {
+    return 0 // Hide all other cards
+  }
+}
+
+const getCardTransform = (repeatIndex: number, index: number) => {
+  const slideIndex = (repeatIndex - 1) * totalSlides + index
+  const distance = Math.abs(slideIndex - currentSlide.value)
+  
+  let scale = 'scale(1)'
+  if (distance === 0) {
+    scale = 'scale(1)' // Active card
+  } else if (distance === 1) {
+    scale = 'scale(0.88)' // Adjacent cards
+  } else if (distance === 2) {
+    scale = 'scale(0.76)' // Second level cards
+  } else {
+    scale = 'scale(0.64)' // Far cards
+  }
+  
+  // Add translateX to close gaps for smaller cards
+  let translateXOffset = 0
+  if (distance === 2) {
+    translateXOffset = slideIndex < currentSlide.value ? 48 : -48 // Move 48px toward center
+  } else if (distance >= 3) {
+    translateXOffset = slideIndex < currentSlide.value ? 64 : -64 // Move 64px toward center
+  }
+  
+  return `${scale} translateX(${translateXOffset}px)`
 }
 
 const animateSlideChange = (direction: 'next' | 'prev') => {
@@ -390,7 +455,7 @@ onMounted(() => {
       ScrollTrigger.create({
         trigger: skillsSection.value,
         scroller: scrollContainer,
-        start: 'top 50%',
+        start: 'top 60%',
         once: true,
         onEnter: () => {
           skillsVisible.value = true
