@@ -49,7 +49,7 @@
       </div>
 
       </div>
-      <div class="bg-alphaLightBlack rounded-md w-full h-fit mt-8 p-4 max-w-[600px] mx-auto lg:mx-0">
+      <div class="bg-alphaLightBlack rounded-md w-full h-fit mt-8 p-4 max-w-fit mx-auto lg:mx-0">
         <div class="flex items-center gap-4">
           <div class="flex gap-1">
             <div class="w-[13px] h-[13px] bg-[#FF5F56] rounded-full"></div>
