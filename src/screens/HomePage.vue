@@ -138,10 +138,10 @@
         class="absolute inset-0 w-full h-full flex flex-col items-center justify-center text-center z-20 pointer-events-none">
         <router-link :to="`/project/${projects[currentSlide % totalSlides].id}`"
           class="inline-block group pointer-events-auto">
-          <h3 class="text-6xl mb-4 font-secondary w-max">{{ projects[currentSlide % totalSlides].title }}</h3>
+          <h3 class="text-5xl mb-4 font-secondary w-max">{{ projects[currentSlide % totalSlides].title }}</h3>
           <div>
             <p v-for="(m, idx) in projects[currentSlide % totalSlides].modules" :key="`module-${idx}`"
-              class="text-xl text-alphaOrange mb-2">{{ m }}</p>
+              class="text-xl text-alphaOrange font-bold mb-2">{{ m }}</p>
           </div>
         </router-link>
       </div>
@@ -151,13 +151,12 @@
           :style="{ transform: `translateX(${translateX}px)`, gap: '0.25rem' }">
           <template v-for="repeatIndex in 5" :key="`repeat-${repeatIndex}`">
             <div v-for="(project, index) in projects" :key="`${repeatIndex}-${project.id}`"
-              class="shrink-0 max-w-[300px] relative" :style="{
-                width: cardWidth,
-                transform: getCardTransform(repeatIndex, index),
-                opacity: getCardOpacity(repeatIndex, index),
-                transition: 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out'
-              }">
-              <div class="absolute inset-0 bg-black/40 rounded-2xl z-10 pointer-events-none"></div>
+  class="shrink-0 w-[265px] relative" :style="{
+    width: cardWidth,
+    transform: getCardTransform(repeatIndex, index),
+    opacity: getCardOpacity(repeatIndex, index),
+    transition: 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out'
+  }">
               <ProjectCard :number="project.id" :title="project.title" :program="project.program"
                 :modules="project.modules" :briefing="project.briefing" :imageUrl="project.imageUrl"
                 :isActive="isActiveSlide(repeatIndex, index)" />
@@ -263,14 +262,14 @@ const cardWidth = computed(() => {
   if (!carouselRef.value) return '70%'
   const containerWidth = carouselRef.value.offsetWidth
   const calculatedWidth = containerWidth * 0.7
-  return `${Math.min(calculatedWidth, 300)}px`
+  return `${Math.min(calculatedWidth, 265)}px`
 })
 
 const translateX = computed(() => {
   if (!carouselRef.value) return 0
   const containerWidth = carouselRef.value.offsetWidth
   const calculatedWidth = containerWidth * 0.7
-  const cardWidthPx = Math.min(calculatedWidth, 300)
+  const cardWidthPx = Math.min(calculatedWidth, 265)
   const gapPx = 4 // 0.25rem = 4px
 
   // Clean calculation without compensation

@@ -62,7 +62,7 @@
                 <div class="relative w-full h-full overflow-hidden rounded-2xl">
                     <ProjectCard :number="project.id" :title="project.title" :program="project.program"
                         :briefing="project.briefing" :image-url="project.imageUrl"
-                        :isActive="true" class="w-full h-full" />
+                        :isActive="true" :showOverlayOnHover="true" class="w-full h-full" />
                    <!-- Overlay text, always above dark overlay -->
                     <div class="text-center z-30 absolute top-6 lg:top-1/3 left-1/2 -translate-x-1/2 px-4 w-full pointer-events-none md:pointer-events-auto"
                         :ref="el => { if (el) desktopOverlayRefs[index] = el }"
