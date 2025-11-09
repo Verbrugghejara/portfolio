@@ -12,7 +12,15 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory('/portfolio/'),
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    // Als er een opgeslagen positie is (zoals bij router.back()), ga daarheen
+    if (savedPosition) {
+      return savedPosition
+    }
+    // Anders, scroll naar boven
+    return { top: 0 }
+  },
 })
 
 export default router

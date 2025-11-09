@@ -35,7 +35,7 @@
     <p
       class="absolute lg:hidden text-[clamp(20rem,80vw,50rem)] uppercase font-bold text-outline-xl -left-[35%] bottom-0 -z-10 -tracking-[0.12em]">
       &lt;/&gt;</p>
-    <div class="absolute right-2 sm:right-4 bottom-4 lg:bottom-30">
+    <div class="absolute right-2 sm:right-4 bottom-30">
       <ScrollIndicator />
     </div>
   </header>

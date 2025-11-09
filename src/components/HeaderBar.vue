@@ -1,9 +1,9 @@
 <template>
   <header>
     <!-- Mobile Header -->
-    <div class="bg-alphaLightBlack flex justify-center items-center p-6 lg:hidden">
+    <router-link to="/" class="bg-alphaLightBlack flex justify-center items-center p-6 z-50 lg:hidden">
       <p class="uppercase font-bold text-2xl">Jara Verbrugghe</p>
-    </div>
+    </router-link>
 
     <!-- Desktop Navigation -->
   <nav class="mx-6 md:mx-12 lg:mx-32 py-4 text-2xl uppercase hidden lg:flex justify-between items-center relative z-50">

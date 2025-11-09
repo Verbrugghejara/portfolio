@@ -52,6 +52,15 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted } from 'vue'
+onMounted(() => {
+    const scrollContainer = document.querySelector('.overflow-y-scroll')
+    if (scrollContainer) {
+        scrollContainer.scrollTo({ top: 0, behavior: 'auto' })
+    } else {
+        window.scrollTo({ top: 0, behavior: 'auto' })
+    }
+})
 import { useRoute } from 'vue-router'
 import { computed } from 'vue'
 import { projects } from '../data/projects' // @ts-ignore
