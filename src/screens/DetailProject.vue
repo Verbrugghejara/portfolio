@@ -5,7 +5,7 @@
         <SubTitles mainText="My Projects" backgroundText="Projects" />
     </div>
     <div v-if="project"
-        class="flex flex-col lg:grid lg:grid-cols-3 lg:gap-6 md:px-16 md:py-10 lg:items-start lg:justify-center mb-4 md:mb-0">
+        class="flex flex-col lg:grid lg:grid-cols-3 lg:gap-6 md:px-16 md:py-10 lg:items-start lg:justify-center mb-15">
         <!-- Afbeelding/video links -->
         <div class="flex justify-center items-center mb-4 w-full xl:ml-[15%] 2xl:ml-[30%]">
 
