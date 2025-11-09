@@ -1,33 +1,26 @@
 <template>
-    <MenuButton title="Go Back"/>
-    
+    <MenuButton title="Go Back" />
+<HeaderBar />
     <!-- Scroll to Top Button -->
-    <button 
-        v-if="showScrollTop"
-        @click="scrollToTop"
-        class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-12 h-12 bg-alphaOrange hover:bg-alphaOrangeHover rounded-full flex items-center justify-center transition-all duration-300 shadow-lg"
-    >
+    <button v-if="showScrollTop" @click="scrollToTop"
+        class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-12 h-12 bg-alphaOrange hover:bg-alphaOrangeHover rounded-full flex items-center justify-center transition-all duration-300 shadow-lg">
         <svg class="w-6 h-6 rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
     </button>
 
     <div class="snap-start flex flex-col min-h-screen md:min-h-fit relative">
-        <HeaderBar />
+        
         <div class="-mt-12">
             <SubTitles mainText="My Projects" backgroundText="Projects" />
         </div>
-        <div class="uppercase mx-6 md:justify-center flex flex-col gap-1 text-alphaLightBlack font-bold mt-8 md:flex-row md:gap-6">
-            <p class="flex items-center gap-1">All <span class="text-xs">(25)</span></p>
+        <div
+            class="uppercase mx-6 md:justify-center flex flex-col gap-1 text-alphaLightBlack font-bold mt-8 md:flex-row md:gap-6">
             <div class="flex gap-4">
-                <p>MCT</p>
-                <p>Devine</p>
-            </div>
-            <div class="flex gap-4">
-                <p>Development</p>
-                <p>UX</p>
-                <p>Design</p>
-                <p>Motion</p>
+                <button v-for="opt in filterOptions" :key="opt" @click="filter = opt"
+                    :class="['px-3 py-1 rounded transition uppercase cursor-pointer', filter === opt ? 'bg-alphaOrange text-white' : 'hover:text-white']">
+                    {{ opt }}
+                </button>
             </div>
         </div>
         <div class="absolute md:hidden top-2/3 left-1/2 -translate-x-1/2">
@@ -39,37 +32,44 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Mobile: Scroll Snap Layout -->
     <div class="md:hidden">
-        <div v-for="(project, index) in projects" :key="project.id" :ref="el => { if (el) projectRefs[index] = el }"
+        <div v-for="(project, index) in filteredProjects" :key="project.id"
+            :ref="el => { if (el) projectRefs[index] = el }"
             class="snap-start min-h-screen flex justify-center items-center relative">
-            <div :ref="el => { if (el) textRefs[index] = el }"
-                class="text-center max-w-4xl z-10 absolute top-1/2 -translate-y-1/2 px-4">
-                <h3 class="text-6xl mb-4 font-secondary">{{ project.title }}</h3>
-                <p class="text-xl text-alphaOrange mb-2">{{ project.category }}</p>
+
+            <!-- Always-on overlay above image, below text -->
+            <div class="w-full flex justify-center px-4 z-10 relative">
+                <ProjectCard :number="project.id" :title="project.title" :program="project.program"
+                    :briefing="project.briefing" :image-url="project.imageUrl" :label="true" :isActive="true" />
             </div>
-            <div class="w-full flex justify-center px-4">
-                <ProjectCard :number="project.id" :title="project.title" :category="project.category"
-                    :description="project.description" :isActive="true" />
+            <div :ref="el => { if (el) textRefs[index] = el }"
+                class="text-center max-w-4xl z-30 absolute top-1/2 -translate-y-1/2 px-4 w-full">
+                <h3 class="text-6xl mb-4 font-secondary">{{ project.title }}</h3>
+                <p class="text-xl text-alphaOrange mb-2">{{ project.program }}</p>
             </div>
         </div>
     </div>
 
     <!-- Desktop: Grid Layout (2 columns) -->
     <div class="hidden md:grid md:grid-cols-2 2xl:grid-cols-3 gap-8 lg:gap-12 px-8 py-16 lg:px-16 justify-items-center">
-        <div v-for="(project, index) in projects" :key="project.id" class="flex justify-center items-center py-8">
-            <div class="relative w-[300px] lg:w-[350px] xl:w-[400px] 2xl:w-[480px] h-[450px] lg:h-[500px] xl:h-[550px] 2xl:h-[600px]"
-                 @mouseenter="handleOverlayEnter($event, index)" @mouseleave="handleOverlayLeave($event, index)">
-                <div class="text-center z-10 absolute top-6 lg:top-8 left-1/2 -translate-x-1/2 px-4 w-full pointer-events-none md:pointer-events-auto"
-                     :ref="el => { if (el) desktopOverlayRefs[index] = el }"
-                     style="opacity:0;transform:translateY(32px);">
-                    <h3 class="text-3xl lg:text-4xl xl:text-5xl mb-2 font-secondary">{{ project.title }}</h3>
-                    <p class="text-base lg:text-lg text-alphaOrange">{{ project.category }}</p>
-                </div>
-                <div class="w-full h-full flex justify-center items-center">
-                    <ProjectCard :number="project.id" :title="project.title" :category="project.category"
-                        :description="project.description" :isActive="true" />
+        <div v-for="(project, index) in filteredProjects" :key="project.id"
+            class="flex justify-center items-center py-8">
+            <div class="relative w-[300px] lg:w-[350px] xl:w-[400px] 2xl:w-[480px] h-[450px] lg:h-[500px] xl:h-[550px] 2xl:h-[600px] cursor-pointer group"
+                @mouseenter="handleOverlayEnter($event, index)"
+                @mouseleave="handleOverlayLeave($event, index)" @click="goToDetail(project.id)">
+                <div class="relative w-full h-full overflow-hidden rounded-2xl">
+                    <ProjectCard :number="project.id" :title="project.title" :program="project.program"
+                        :briefing="project.briefing" :image-url="project.imageUrl"
+                        :isActive="true" class="w-full h-full" />
+                   <!-- Overlay text, always above dark overlay -->
+                    <div class="text-center z-30 absolute top-6 lg:top-1/3 left-1/2 -translate-x-1/2 px-4 w-full pointer-events-none md:pointer-events-auto"
+                        :ref="el => { if (el) desktopOverlayRefs[index] = el }"
+                        style="opacity:0;transform:translateY(32px);">
+                        <h3 class="text-3xl lg:text-4xl xl:text-5xl 2xl:text-7xl mb-2 font-secondary">{{ project.title }}</h3>
+                        <p class="text-base lg:text-lg 2xl:text-2xl text-alphaOrange">{{ project.program }}</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -77,7 +77,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { useRouter } from 'vue-router'
 import gsap from 'gsap'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 import { projects } from '../data/projects'
@@ -94,6 +95,10 @@ import ProjectCard from '../components/ProjectCard.vue'
 
 gsap.registerPlugin(ScrollToPlugin)
 
+const router = useRouter()
+const goToDetail = (id: number) => {
+    router.push(`/project/${id}`)
+}
 const projectRefs = ref<any[]>([])
 const textRefs = ref<any[]>([])
 const desktopOverlayRefs = ref<any[]>([])
@@ -155,7 +160,7 @@ const scrollToProject = (index: number) => {
 
     const targetElement = projectRefs.value[index]
     const scrollContainer = document.querySelector('.overflow-y-scroll')
-    
+
     if (!targetElement || !scrollContainer) return
 
     isScrolling = true
@@ -177,7 +182,7 @@ const scrollToTop = () => {
 
     currentProjectIndex = -1
     isScrolling = true
-    
+
     gsap.to(scrollContainer, {
         duration: 1,
         scrollTo: { y: 0 },
@@ -204,7 +209,7 @@ const handleWheel = (event: WheelEvent) => {
         event.preventDefault()
         return
     }
-    
+
     lastScrollTime = now
 
     // Determine scroll direction
@@ -245,7 +250,7 @@ const handleTouchStart = (event: TouchEvent) => {
     if (window.innerWidth >= 768) {
         return
     }
-    
+
     touchStartY = event.touches[0].clientY
     touchEndY = touchStartY
 }
@@ -255,9 +260,9 @@ const handleTouchMove = (event: TouchEvent) => {
     if (window.innerWidth >= 768) {
         return
     }
-    
+
     touchEndY = event.touches[0].clientY
-    
+
     // Prevent native scroll during active touch
     const swipeDistance = Math.abs(touchStartY - touchEndY)
     if (swipeDistance > 10) {
@@ -270,7 +275,7 @@ const handleTouchEnd = () => {
     if (window.innerWidth >= 768) {
         return
     }
-    
+
     if (isScrolling) {
         return
     }
@@ -337,7 +342,7 @@ const checkVisibility = () => {
     // Check if we're at the top (header visible)
     if (scrollContainer && scrollContainer.scrollTop < 200) {
         currentProjectIndex = -1
-        
+
         if (currentVisibleIndex.value !== -1) {
             animateText(currentVisibleIndex.value, 'out')
             currentVisibleIndex.value = -1
@@ -387,6 +392,18 @@ const checkVisibility = () => {
     }
 }
 
+const filter = ref('all')
+const filterOptions = ['all', 'mct', 'devine', 'development', 'ux', 'design']
+const filteredProjects = computed(() => {
+    if (filter.value === 'all') return projects
+    if (filter.value === 'mct') return projects.filter(p => (p.program || '').toLowerCase() === 'mct')
+    if (filter.value === 'devine') return projects.filter(p => (p.program || '').toLowerCase() === 'devine')
+    if (filter.value === 'development') return projects.filter(p => (p.modules || []).map(m => m.toLowerCase()).includes('development'))
+    if (filter.value === 'ux') return projects.filter(p => (p.modules || []).map(m => m.toLowerCase()).includes('ux'))
+    if (filter.value === 'design') return projects.filter(p => (p.modules || []).map(m => m.toLowerCase()).includes('design'))
+    return projects
+})
+
 onMounted(() => {
     // Set initial positions for all texts
     textRefs.value.forEach(el => {
@@ -397,12 +414,12 @@ onMounted(() => {
 
     // Add wheel event listener for snap scrolling
     window.addEventListener('wheel', handleWheel, { passive: false })
-    
+
     // Add touch event listeners for mobile
     window.addEventListener('touchstart', handleTouchStart, { passive: true })
     window.addEventListener('touchmove', handleTouchMove, { passive: false })
     window.addEventListener('touchend', handleTouchEnd, { passive: false })
-    
+
     // Add scroll listener for text animations
     window.addEventListener('scroll', checkVisibility, true)
 })

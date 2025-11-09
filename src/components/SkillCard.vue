@@ -41,7 +41,7 @@
             />
           </svg>
           <div class="absolute inset-3 rounded-lg flex flex-col items-center justify-center">
-            <p class="text-4xl font-bold text-alphaOrange">{{ percentage }}%</p>
+            <p class="text-4xl font-bold text-alphaOrange cursor-default">{{ percentage }}%</p>
           </div>
         </div>
       </div>
