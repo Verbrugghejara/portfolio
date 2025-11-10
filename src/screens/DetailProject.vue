@@ -54,7 +54,7 @@
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowfullscreen
-                        class="rounded-md shadow-md max-h-80 max-w-full w-full aspect-video bg-black"
+                        class="rounded-md shadow-md max-h-80 max-w-full w-full aspect-video bg-alphaBlack"
                     ></iframe>
                 </div>
 
