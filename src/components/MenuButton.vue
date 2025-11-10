@@ -38,7 +38,7 @@
           ></span>
         </div>
         
-        <span class="text-lg">{{ isOpen ? 'Close' : 'Menu' }}</span>
+  <span class="text-lg inline-block" style="min-width: 60px; text-align: left;">{{ isOpen ? 'Close' : 'Menu' }}</span>
       </button>
     </template>
 
@@ -66,7 +66,7 @@ const router = useRouter()
 const isOpen = ref(false)
 
 const menuItems = [
-  { label: 'About Me', href: '#aboutMe' },
+  { label: 'About Me', href: '#about' },
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' }
 ]

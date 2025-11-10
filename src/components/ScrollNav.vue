@@ -1,5 +1,5 @@
 <template>
-  <nav class="fixed top-1/2 right-10 -translate-y-1/2 z-50 flex flex-col gap-6 mr-8">
+  <nav class="fixed top-1/2 right-10 -translate-y-1/2 z-50 flex-col gap-6 mr-8 hidden lg:flex">
     <ul class="flex flex-col gap-6">
       <li v-for="section in sections" :key="section.id">
         <button
