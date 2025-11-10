@@ -117,12 +117,12 @@
       <div class="flex justify-center">
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-15 justify-items-center">
           <SkillCard name="HTML" iconUrl="/portfolio/icons/html.svg" :percentage="skillsVisible ? 90 : 0" />
+          <SkillCard name="CSS" iconUrl="/portfolio/icons/css.svg" :percentage="skillsVisible ? 88 : 0" />
           <SkillCard name="JavaScript" iconUrl="/portfolio/icons/javascript.svg" :percentage="skillsVisible ? 85 : 0" />
           <SkillCard name="TypeScript" iconUrl="/portfolio/icons/typescript.svg" :percentage="skillsVisible ? 80 : 0" />
           <SkillCard name="React" iconUrl="/portfolio/icons/react.svg" :percentage="skillsVisible ? 75 : 0" />
-          <SkillCard name="Vue" iconUrl="/portfolio/icons/vue.svg" :percentage="skillsVisible ? 85 : 0" />
           <SkillCard name="Tailwind" iconUrl="/portfolio/icons/tailwind.svg" :percentage="skillsVisible ? 90 : 0" />
-          <SkillCard name="CSS" iconUrl="/portfolio/icons/css.svg" :percentage="skillsVisible ? 88 : 0" />
+          <SkillCard name="Vue" iconUrl="/portfolio/icons/vue.svg" :percentage="skillsVisible ? 85 : 0" />
           <SkillCard name="Vite" iconUrl="/portfolio/icons/vitejs.svg" :percentage="skillsVisible ? 82 : 0" />
         </div>
       </div>

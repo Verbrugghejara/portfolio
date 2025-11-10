@@ -16,7 +16,39 @@
         </div>
         <div
             class="uppercase mx-6 md:justify-center flex flex-col gap-1 text-alphaLightBlack font-bold mt-8 md:flex-row md:gap-6">
-            <div class="flex gap-4">
+            <!-- Mobile: 3 rijen -->
+            <div class="flex gap-4 lg:justify-center md:hidden mb-1">
+                <button @click="filter = 'all'"
+                    :class="['px-3 py-1 rounded transition uppercase cursor-pointer', filter === 'all' ? 'bg-alphaOrange text-white' : 'hover:text-white']">
+                    all
+                </button>
+            </div>
+            <div class="flex gap-4 lg:justify-center md:hidden mb-1">
+                <button @click="filter = 'mct'"
+                    :class="['px-3 py-1 rounded transition uppercase cursor-pointer', filter === 'mct' ? 'bg-alphaOrange text-white' : 'hover:text-white']">
+                    mct
+                </button>
+                <button @click="filter = 'devine'"
+                    :class="['px-3 py-1 rounded transition uppercase cursor-pointer', filter === 'devine' ? 'bg-alphaOrange text-white' : 'hover:text-white']">
+                    devine
+                </button>
+            </div>
+            <div class="flex gap-4 md:justify-center md:hidden">
+                <button @click="filter = 'development'"
+                    :class="['px-3 py-1 rounded transition uppercase cursor-pointer', filter === 'development' ? 'bg-alphaOrange text-white' : 'hover:text-white']">
+                    development
+                </button>
+                <button @click="filter = 'ux'"
+                    :class="['px-3 py-1 rounded transition uppercase cursor-pointer', filter === 'ux' ? 'bg-alphaOrange text-white' : 'hover:text-white']">
+                    ux
+                </button>
+                <button @click="filter = 'design'"
+                    :class="['px-3 py-1 rounded transition uppercase cursor-pointer', filter === 'design' ? 'bg-alphaOrange text-white' : 'hover:text-white']">
+                    design
+                </button>
+            </div>
+            <!-- Desktop: alles in één rij -->
+            <div class="hidden md:flex gap-4">
                 <button v-for="opt in filterOptions" :key="opt" @click="filter = opt"
                     :class="['px-3 py-1 rounded transition uppercase cursor-pointer', filter === opt ? 'bg-alphaOrange text-white' : 'hover:text-white']">
                     {{ opt }}
@@ -37,7 +69,9 @@
     <div class="md:hidden">
         <div v-for="(project, index) in filteredProjects" :key="project.id"
             :ref="el => { if (el) projectRefs[index] = el }"
-            class="snap-start min-h-screen flex justify-center items-center relative">
+            class="snap-start min-h-screen flex justify-center items-center relative"
+            @click="goToDetail(project.id)"
+            style="cursor: pointer;">
 
             <!-- Always-on overlay above image, below text -->
             <div class="w-full flex justify-center px-4 z-10 relative">
