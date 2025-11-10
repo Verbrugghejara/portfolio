@@ -6,7 +6,7 @@
       var root = "/portfolio/";
       if (location.pathname !== root && location.pathname !== root + "index.html") {
         var path = location.pathname.replace(/^\/portfolio\//, "");
-        location.replace("/portfolio/?" + path + location.search + location.hash);
+        location.replace("/portfolio/#/" + path + location.search + location.hash);
       }
     </script>
   </head>
