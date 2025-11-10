@@ -19,10 +19,10 @@
 </template>
 
 <script setup>
+gsap.registerPlugin(ScrollToPlugin);
 import { ref, onMounted, onUnmounted } from 'vue';
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
-gsap.registerPlugin(ScrollToPlugin);
 
 const sections = [
   { id: 'home', label: 'Home' },

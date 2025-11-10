@@ -36,29 +36,5 @@
 </template>
 
 <script setup lang="ts">
-import gsap from 'gsap';
-import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 gsap.registerPlugin(ScrollToPlugin);
-
-import { useRouter, useRoute } from 'vue-router';
-const router = useRouter();
-const route = useRoute();
-
-const scrollToSection = (id: string) => {
-  // If not on homepage, navigate to homepage with hash
-  if (route.path !== '/') {
-    router.push({ path: '/', hash: `#${id}` });
-    return;
-  }
-  // If already on homepage, smooth scroll
-  const scrollContainer = document.querySelector('.overflow-y-scroll') || window;
-  const section = document.getElementById(id) || document.querySelector(`#${id}`);
-  if (section) {
-    gsap.to(scrollContainer, {
-      duration: 1,
-      scrollTo: { y: section, offsetY: 0 },
-      ease: 'power2.inOut',
-    });
-  }
-}
 </script>

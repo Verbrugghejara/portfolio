@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue'
 import gsap from 'gsap'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { useRoute } from 'vue-router'
-import { nextTick, watch } from 'vue'
 import { main as projects } from '../data/projects'
 // @ts-ignore
 import MenuButton from '../components/MenuButton.vue'
@@ -24,16 +22,16 @@ import ScrollNav from '../components/ScrollNav.vue'
 
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
 
+
 // Scroll naar About Me wanneer ScrollIndicator wordt aangeklikt
 function scrollToAbout() {
-  const aboutSection = document.getElementById('about')
-  const scrollContainer = document.querySelector('.overflow-y-scroll') || window
+  const aboutSection = document.getElementById('about');
   if (aboutSection) {
-    gsap.to(scrollContainer, {
+    gsap.to(window, {
       duration: 1,
       scrollTo: { y: aboutSection, offsetY: 0 },
       ease: 'power2.inOut',
-    })
+    });
   }
 }
 

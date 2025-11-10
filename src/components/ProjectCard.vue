@@ -26,28 +26,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
 const props = defineProps({
-  number: Number,
   title: String,
   program: String,
-  modules: {
-    type: Array,
-    default: () => []
-  },
-  briefing: String,
   imageUrl: String,
-  isActive: Boolean,
-  cardRotateY: Number,
-  cardRotateX: Number,
   label: {
     type: Boolean,
     default: true
   },
   showOverlayOnHover: {
-  type: Boolean,
-  default: false
-}
+    type: Boolean,
+    default: false
+  }
 })
 
 </script>
