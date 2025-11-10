@@ -4,6 +4,14 @@
     <div class="-mt-8 md:-mt-12">
         <SubTitles mainText="My Projects" backgroundText="Projects" />
     </div>
+    <button
+      @click="goBack"
+      class="flex items-center gap-2 mx-6 xl:mx-32 px-4 py-2 bg-alphaOrange hover:bg-alphaOrangeHover text-alphaWhite rounded cursor-pointer transition">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+      Back
+    </button>
     <div v-if="project"
         class="flex flex-col lg:grid lg:grid-cols-3 lg:gap-6 md:px-16 md:py-10 lg:items-start lg:justify-center mb-15">
         <!-- Afbeelding/video links -->
@@ -40,9 +48,14 @@
                 <h3 class="uppercase font-bold text-xl md:text-2xl">Demo</h3>
     
                 <div class="w-full mt-2">
-                    <video :src="project.video" controls class="rounded-md shadow-md max-h-80 max-w-full bg-black">
-                        Je browser ondersteunt geen video.
-                    </video>
+                    <iframe
+                        v-if="project.video"
+                        :src="getYoutubeEmbedUrl(project.video)"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                        class="rounded-md shadow-md max-h-80 max-w-full w-full aspect-video bg-black"
+                    ></iframe>
                 </div>
 
             </div>
@@ -52,7 +65,23 @@
 </template>
 
 <script setup lang="ts">
+// Helper to convert YouTube URL to embed URL
+function getYoutubeEmbedUrl(url: string): string {
+    // Supports typical YouTube links: https://www.youtube.com/watch?v=VIDEO_ID or https://youtu.be/VIDEO_ID
+    const regExp = /(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?|shorts)\/|.*[?&]v=)|youtu\.be\/)([\w-]{11})/;
+    const match = url.match(regExp);
+    if (match && match[1]) {
+        return `https://www.youtube.com/embed/${match[1]}`;
+    }
+    // fallback: return original url
+    return url;
+}
 import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+const router = useRouter()
+const goBack = () => {
+    router.back();
+}
 onMounted(() => {
     const scrollContainer = document.querySelector('.overflow-y-scroll')
     if (scrollContainer) {
@@ -64,7 +93,7 @@ onMounted(() => {
 import { useRoute } from 'vue-router'
 import { computed } from 'vue'
 import { projects } from '../data/projects' // @ts-ignore
-import SubTitles from '../components/SubTitles.vue'
+import SubTitles from '../components/SubTitles.vue'// @ts-ignore
 import HeaderBar from '../components/HeaderBar.vue'// @ts-ignore
 import MenuButton from '../components/MenuButton.vue'
 

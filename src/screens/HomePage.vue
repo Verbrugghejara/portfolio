@@ -1,205 +1,5 @@
-<template>
-  <MenuButton title="Menu" />
-  <HeaderBar />
-  <header class="relative min-h-screen">
-
-    <div class="mx-6 md:mx-12 lg:mx-32 relative">
-      <div class="pt-6 mt-6 relative overflow-hidden w-fit pr-[35px] lg:pr-[90px]">
-        <p
-          class="font-secondary text-[clamp(1rem,4vw,1.5rem)] font-bold bg-alphaOrange absolute px-3 py-0.5 rounded-full tracking-wider right-0 top-6 lg:top-32 sm:top-8 md:top-11">
-          2026</p>
-        <h1 class="uppercase font-secondary font-bold text-[clamp(5rem,21vw,16rem)]">Portfolio</h1>
-      </div>
-      <div class="h-8 flex items-center -mt-6 sm:-mt-10 lg:hidden">
-        <p class="text-2xl">{{ displayText }}<span class=" text-alphaOrange font-bold">|</span></p>
-      </div>
-      <div class="h-8 items-center -mt-6 sm:-mt-10 hidden lg:flex">
-        <p class="uppercase text-2xl">Jara verbrugghe</p>
-        <div class="border-b-2 w-[30%] mr-2 ml-2"></div>
-        <p class="text-2xl">{{ displayText }}<span class=" text-alphaOrange font-bold">|</span></p>
-      </div>
-      <p
-        class="absolute text-[clamp(7rem,29vw,36rem)] uppercase font-secondary font-bold text-outline -rotate-15 -left-[15%] top-10 -z-10">
-        Developer</p>
-      <div class="justify-end flex mr-6 sm:text-xl">
-        <p class="leading-relaxed mt-15 lg:mt-30 2xl:mr-30">
-          <span class="text-alphaOrange font-bold">&lt;span&gt;</span>
-          <span class="block"> &nbsp;&nbsp;Frontend Developer <br class="sm:hidden"> <span
-              class="sm:hidden">&nbsp;&nbsp;</span> in the making. <br>
-            &nbsp;&nbsp;Graduating in July 2026</span>
-          <span class="text-alphaOrange font-bold">&lt;/span&gt;</span>
-        </p>
-
-      </div>
-    </div>
-    <p
-      class="absolute lg:hidden text-[clamp(20rem,80vw,50rem)] uppercase font-bold text-outline-xl -left-[35%] bottom-0 -z-10 -tracking-[0.12em]">
-      &lt;/&gt;</p>
-    <div class="absolute right-2 sm:right-4 bottom-30">
-      <ScrollIndicator />
-    </div>
-  </header>
-  <section id="aboutMe" class="mx-6 md:mx-12 lg:mx-16 2xl:mx-32">
-    <SubTitles mainText="About Me" backgroundText="About" />
-    <div class="lg:flex lg:flex-row-reverse lg:justify-center lg:gap-[5%] xl:gap-[15%] lg:items-center">
-      <div>
-        <div class="relative flex justify-center items-center h-96">
-          <div
-            class="absolute top-13 left-1/2 -translate-x-[calc(50%-2rem)] translate-y-4 w-64 h-80 border-6 border-alphaOrange rounded-2xl">
-          </div>
-          <div class="relative w-64 h-80 bg-alphaWhite rounded-2xl shadow-lg"></div>
-        </div>
-        <div class="mt-12 text-center font-bold hidden lg:block">
-          <p>Want to know more about me?</p>
-          <button
-            class="mt-2 px-4 py-2 bg-alphaOrange hover:bg-alphaOrangeHover cursor-pointer uppercase text-white rounded-md">Resume</button>
-        </div>
-
-      </div>
-      <div class="bg-alphaLightBlack rounded-md w-full h-fit mt-8 p-4 max-w-fit mx-auto lg:mx-0">
-        <div class="flex items-center gap-4">
-          <div class="flex gap-1">
-            <div class="w-[13px] h-[13px] bg-[#FF5F56] rounded-full"></div>
-            <div class="w-[13px] h-[13px] bg-[#FFBD2E] rounded-full"></div>
-            <div class="w-[13px] h-[13px] bg-[#27C93F] rounded-full"></div>
-          </div>
-          <p>about-me.js</p>
-        </div>
-        <div class="mt-4 w-full overflow-x-auto">
-          <pre class=" text-white p-4 rounded-2xl font-mono leading-relaxed min-w-[500px]">
-  <span class="text-alphaOrange">const</span> Jara = {
-    version: <span class="text-alphaOrange">"2002.03.29"</span>,
-    location: [<span class="text-alphaOrange">"Ruiselede", "Belgium"</span>],
-    languages: [<span class="text-alphaOrange">"Dutch", "English", "HTML", "CSS", "JS"</span>],
-    status: <span class="text-alphaOrange">"Student"</span>,
-    education: [
-      {
-        program: <span class="text-alphaOrange">"Multimedia and Creative Technologies (MCT)"</span>,
-        university: <span class="text-alphaOrange">"Howest University of Applied Sciences"</span>,
-        graduated: <span class="text-alphaOrange">"2023"</span>
-      },
-      {
-        program: <span class="text-alphaOrange">"Digital Design and Development (DEVINE)"</span>,
-        university: <span class="text-alphaOrange">"Howest University of Applied Sciences"</span>,
-        graduating: <span class="text-alphaOrange">"2026"</span>
-      }
-    ],
-    likes: [<span class="text-alphaOrange">"Clean design", "Night coding"</span>],
-    dislikes: [<span class="text-alphaOrange">"Clunky UX"</span>],
-    hobbies: [<span class="text-alphaOrange">"Soccer", "Gaming", "Hanging out with friends"</span>]
-  };
-    </pre>
-        </div>
-        <div class="flex gap-2 items-center justify-center mt-4 sm:hidden">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-          </svg>
-          <p class="uppercase">scroll horizontal</p>
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
-        </div>
-
-      </div>
-
-    </div>
-    <div class="mt-12 text-center font-bold lg:hidden">
-      <p>Want to know more about me?</p>
-      <button class="mt-2 px-4 py-2 bg-alphaOrange uppercase text-white rounded-md">Resume</button>
-    </div>
-  </section>
-  <section id="skills" ref="skillsSection" class="py-12 ">
-    <div class="max-w-4xl mx-auto px-6">
-      <SubTitles mainText="Skills" backgroundText="Skills" />
-      <p class="mb-8 text-center max-w-xl mx-auto">I learned a lot of skills during my studies, so these are the top
-        skills I have acquired:</p>
-
-      <div class="flex justify-center">
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-15 justify-items-center">
-          <SkillCard name="HTML" iconUrl="/portfolio/icons/html.svg" :percentage="skillsVisible ? 90 : 0" />
-          <SkillCard name="CSS" iconUrl="/portfolio/icons/css.svg" :percentage="skillsVisible ? 88 : 0" />
-          <SkillCard name="JavaScript" iconUrl="/portfolio/icons/javascript.svg" :percentage="skillsVisible ? 85 : 0" />
-          <SkillCard name="TypeScript" iconUrl="/portfolio/icons/typescript.svg" :percentage="skillsVisible ? 80 : 0" />
-          <SkillCard name="React" iconUrl="/portfolio/icons/react.svg" :percentage="skillsVisible ? 75 : 0" />
-          <SkillCard name="Tailwind" iconUrl="/portfolio/icons/tailwind.svg" :percentage="skillsVisible ? 90 : 0" />
-          <SkillCard name="Vue" iconUrl="/portfolio/icons/vue.svg" :percentage="skillsVisible ? 85 : 0" />
-          <SkillCard name="Vite" iconUrl="/portfolio/icons/vitejs.svg" :percentage="skillsVisible ? 82 : 0" />
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="projects" class="pb-20 2xl:mx-32 ">
-    <div class="mx-6 md:mx-12">
-      <SubTitles mainText="My Projects" backgroundText="Projects" />
-    </div>
-
-    <div class="relative overflow-hidden">
-      <div ref="textOverlay"
-        class="absolute inset-0 w-full h-full flex flex-col items-center justify-center text-center z-20 pointer-events-none">
-        <router-link :to="`/project/${projects[currentSlide % totalSlides].id}`"
-          class="inline-block group pointer-events-auto">
-          <h3 class="text-5xl mb-4 font-secondary w-max">{{ projects[currentSlide % totalSlides].title }}</h3>
-          <div>
-            <p v-for="(m, idx) in projects[currentSlide % totalSlides].modules" :key="`module-${idx}`"
-              class="text-xl text-alphaOrange font-bold mb-2">{{ m }}</p>
-          </div>
-        </router-link>
-      </div>
-
-      <div ref="carouselRef" class="overflow-hidden">
-        <div class="flex transition-transform duration-500 ease-in-out"
-          :style="{ transform: `translateX(${translateX}px)`, gap: '0.25rem' }">
-          <template v-for="repeatIndex in 5" :key="`repeat-${repeatIndex}`">
-            <div v-for="(project, index) in projects" :key="`${repeatIndex}-${project.id}`"
-  class="shrink-0 w-[265px] relative" :style="{
-    width: cardWidth,
-    transform: getCardTransform(repeatIndex, index),
-    opacity: getCardOpacity(repeatIndex, index),
-    transition: 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out'
-  }">
-              <ProjectCard :number="project.id" :title="project.title" :program="project.program"
-                :modules="project.modules" :briefing="project.briefing" :imageUrl="project.imageUrl"
-                :isActive="isActiveSlide(repeatIndex, index)" />
-            </div>
-          </template>
-        </div>
-      </div>
-
-
-      <button @click="prevSlide"
-        class="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-alphaOrange hover:bg-alphaOrangeHover rounded-full flex items-center justify-center transition-all z-10 cursor-pointer">
-        <svg class="w-6 h-6 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-        </svg>
-      </button>
-      <button @click="nextSlide"
-        class="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-alphaOrange hover:bg-alphaOrangeHover rounded-full flex items-center justify-center transition-all z-10 cursor-pointer">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-        </svg>
-      </button>
-    </div>
-
-    <button @click="viewAllProjects"
-      class="uppercase flex justify-center underline mt-6 mb-8 mx-auto cursor-pointer hover:text-alphaOrange">View
-      all projects</button>
-  </section>
-</template>
-
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-const router = useRouter()
-function viewAllProjects() {
-  router.push('/projects').then(() => {
-    // Scroll to top after navigation
-    const scrollContainer = document.querySelector('.overflow-y-scroll') || window
-    if (scrollContainer === window) {
-      window.scrollTo({ top: 0, behavior: 'auto' })
-    } else {
-      (scrollContainer as HTMLElement).scrollTo({ top: 0, behavior: 'auto' })
-    }
-  })
-}
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import gsap from 'gsap'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
@@ -219,10 +19,37 @@ import SubTitles from '../components/SubTitles.vue'
 import SkillCard from '../components/SkillCard.vue'
 // @ts-ignore
 import ProjectCard from '../components/ProjectCard.vue'
+// @ts-ignore
+import ScrollNav from '../components/ScrollNav.vue'
 
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
 
-// Watch for hash navigation and scroll to section
+// Scroll naar About Me wanneer ScrollIndicator wordt aangeklikt
+function scrollToAbout() {
+  const aboutSection = document.getElementById('about')
+  const scrollContainer = document.querySelector('.overflow-y-scroll') || window
+  if (aboutSection) {
+    gsap.to(scrollContainer, {
+      duration: 1,
+      scrollTo: { y: aboutSection, offsetY: 0 },
+      ease: 'power2.inOut',
+    })
+  }
+}
+
+const router = useRouter()
+function viewAllProjects() {
+  router.push('/projects').then(() => {
+    // Scroll to top after navigation
+    const scrollContainer = document.querySelector('.overflow-y-scroll') || window
+    if (scrollContainer === window) {
+      window.scrollTo({ top: 0, behavior: 'auto' })
+    } else {
+      (scrollContainer as HTMLElement).scrollTo({ top: 0, behavior: 'auto' })
+    }
+  })
+}
+
 const route = useRoute()
 watch(
   () => route.hash,
@@ -534,3 +361,194 @@ onUnmounted(() => {
   }
 })
 </script>
+<template>
+  <header id="home" class="relative min-h-screen">
+    <MenuButton title="Menu" />
+    <HeaderBar />
+    <ScrollNav />
+
+    <div class="mx-6 md:mx-12 xl:mx-32 relative">
+      <div class="pt-6 mt-6 relative overflow-hidden w-fit pr-[35px] lg:pr-[90px]">
+        <p
+          class="font-secondary text-[clamp(1rem,4vw,1.5rem)] font-bold bg-alphaOrange absolute px-3 py-0.5 rounded-full tracking-wider right-0 top-6 lg:top-32 sm:top-8 md:top-11">
+          2026</p>
+        <h1 class="uppercase font-secondary font-bold text-[clamp(5rem,21vw,16rem)]">Portfolio</h1>
+      </div>
+      <div class="h-8 flex items-center -mt-6 sm:-mt-10 lg:hidden">
+        <p class="text-2xl">{{ displayText }}<span class=" text-alphaOrange font-bold">|</span></p>
+      </div>
+      <div class="h-8 items-center -mt-6 sm:-mt-10 hidden lg:flex">
+        <p class="uppercase text-2xl">Jara verbrugghe</p>
+        <div class="border-b-2 w-[30%] mr-2 ml-2"></div>
+        <p class="text-2xl">{{ displayText }}<span class=" text-alphaOrange font-bold">|</span></p>
+      </div>
+      <button @click="viewAllProjects"
+        class="mt-6 font-bold px-4 py-2 bg-alphaOrange hover:bg-alphaOrangeHover cursor-pointer uppercase text-white rounded-md">All projects</button>
+
+      <p
+        class="absolute text-[clamp(7rem,29vw,36rem)] uppercase font-secondary font-bold text-outline -rotate-15 -left-[15%] top-10 -z-10">
+        Developer</p>
+      <div class="justify-end flex mr-6 sm:text-xl">
+        <p class="leading-relaxed mt-15 lg:mt-30 2xl:mr-30">
+          <span class="text-alphaOrange font-bold">&lt;span&gt;</span>
+          <span class="block"> &nbsp;&nbsp;Frontend Developer <br class="sm:hidden"> <span
+              class="sm:hidden">&nbsp;&nbsp;</span> in the making. <br>
+            &nbsp;&nbsp;Graduating in July 2026</span>
+          <span class="text-alphaOrange font-bold">&lt;/span&gt;</span>
+        </p>
+
+      </div>
+    </div>
+    <p
+      class="absolute lg:hidden text-[clamp(20rem,80vw,50rem)] uppercase font-bold text-outline-xl -left-[35%] bottom-0 -z-10 -tracking-[0.12em]">
+      &lt;/&gt;</p>
+    <div class="absolute right-2 sm:right-4 bottom-6">
+      <ScrollIndicator class="hover:text-alphaOrange cursor-pointer" @scrollToAbout="scrollToAbout" />
+    </div>
+  </header>
+  <section id="about" class="mx-6 md:mx-12 lg:mx-16 2xl:mx-32">
+    <SubTitles mainText="About Me" backgroundText="About" />
+    <div class="lg:flex lg:flex-row-reverse lg:justify-center lg:gap-[5%] xl:gap-[15%] lg:items-center">
+      <div>
+        <div class="relative flex justify-center items-center h-96">
+          <div
+            class="absolute top-13 left-1/2 -translate-x-[calc(50%-2rem)] translate-y-4 w-64 h-80 border-6 border-alphaOrange rounded-2xl">
+          </div>
+          <div class="relative w-64 h-80 bg-alphaWhite rounded-2xl shadow-lg"></div>
+        </div>
+        <div class="mt-12 text-center font-bold hidden lg:block">
+          <p>Want to know more about me?</p>
+          <button
+            class="mt-2 px-4 py-2 bg-alphaOrange hover:bg-alphaOrangeHover cursor-pointer uppercase text-white rounded-md">Resume</button>
+        </div>
+
+      </div>
+      <div class="bg-alphaLightBlack rounded-md w-full h-fit mt-8 p-4 max-w-fit mx-auto lg:mx-0">
+        <div class="flex items-center gap-4">
+          <div class="flex gap-1">
+            <div class="w-[13px] h-[13px] bg-[#FF5F56] rounded-full"></div>
+            <div class="w-[13px] h-[13px] bg-[#FFBD2E] rounded-full"></div>
+            <div class="w-[13px] h-[13px] bg-[#27C93F] rounded-full"></div>
+          </div>
+          <p>about-me.js</p>
+        </div>
+        <div class="mt-4 w-full overflow-x-auto">
+          <pre class=" text-white p-4 rounded-2xl font-mono leading-relaxed min-w-[500px]">
+  <span class="text-alphaOrange">const</span> Jara = {
+    version: <span class="text-alphaOrange">"2002.03.29"</span>,
+    location: [<span class="text-alphaOrange">"Ruiselede", "Belgium"</span>],
+    languages: [<span class="text-alphaOrange">"Dutch", "English", "HTML", "CSS", "JS"</span>],
+    status: <span class="text-alphaOrange">"Student"</span>,
+    education: [
+      {
+        program: <span class="text-alphaOrange">"Multimedia and Creative Technologies (MCT)"</span>,
+        university: <span class="text-alphaOrange">"Howest University of Applied Sciences"</span>,
+        graduated: <span class="text-alphaOrange">"2023"</span>
+      },
+      {
+        program: <span class="text-alphaOrange">"Digital Design and Development (DEVINE)"</span>,
+        university: <span class="text-alphaOrange">"Howest University of Applied Sciences"</span>,
+        graduating: <span class="text-alphaOrange">"2026"</span>
+      }
+    ],
+    likes: [<span class="text-alphaOrange">"Clean design", "Night coding"</span>],
+    dislikes: [<span class="text-alphaOrange">"Clunky UX"</span>],
+    hobbies: [<span class="text-alphaOrange">"Soccer", "Gaming", "Hanging out with friends"</span>]
+  };
+    </pre>
+        </div>
+        <div class="flex gap-2 items-center justify-center mt-4 sm:hidden">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          <p class="uppercase">scroll horizontal</p>
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="mt-12 text-center font-bold lg:hidden">
+      <p>Want to know more about me?</p>
+      <button class="mt-2 px-4 py-2 bg-alphaOrange uppercase text-white rounded-md">Resume</button>
+    </div>
+  </section>
+  <section id="skills" ref="skillsSection" class="py-12 ">
+    <div class="max-w-4xl mx-auto px-6">
+      <SubTitles mainText="Skills" backgroundText="Skills" />
+      <p class="mb-8 text-center max-w-xl mx-auto">I learned a lot of skills during my studies, so these are the top
+        skills I have acquired:</p>
+
+      <div class="flex justify-center">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-15 justify-items-center">
+          <SkillCard name="HTML" iconUrl="/portfolio/icons/html.svg" :percentage="skillsVisible ? 90 : 0" />
+          <SkillCard name="CSS" iconUrl="/portfolio/icons/css.svg" :percentage="skillsVisible ? 88 : 0" />
+          <SkillCard name="JavaScript" iconUrl="/portfolio/icons/javascript.svg" :percentage="skillsVisible ? 85 : 0" />
+          <SkillCard name="TypeScript" iconUrl="/portfolio/icons/typescript.svg" :percentage="skillsVisible ? 80 : 0" />
+          <SkillCard name="React" iconUrl="/portfolio/icons/react.svg" :percentage="skillsVisible ? 75 : 0" />
+          <SkillCard name="Tailwind" iconUrl="/portfolio/icons/tailwind.svg" :percentage="skillsVisible ? 90 : 0" />
+          <SkillCard name="Vue" iconUrl="/portfolio/icons/vue.svg" :percentage="skillsVisible ? 85 : 0" />
+          <SkillCard name="Vite" iconUrl="/portfolio/icons/vitejs.svg" :percentage="skillsVisible ? 82 : 0" />
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="projects" class="pb-20 2xl:mx-32 ">
+    <div class="mx-6 md:mx-12">
+      <SubTitles mainText="My Projects" backgroundText="Projects" />
+    </div>
+
+    <div class="relative overflow-hidden">
+      <div ref="textOverlay"
+        class="absolute inset-0 w-full h-full flex flex-col items-center justify-center text-center z-20 pointer-events-none">
+        <router-link :to="`/project/${projects[currentSlide % totalSlides].id}`"
+          class="inline-block group pointer-events-auto">
+          <h3 class="text-5xl mb-4 font-secondary text-center">{{ projects[currentSlide % totalSlides].title }}</h3>
+          <div>
+            <p v-for="(m, idx) in projects[currentSlide % totalSlides].modules" :key="`module-${idx}`"
+              class="text-xl text-alphaOrange font-bold mb-2">{{ m }}</p>
+          </div>
+        </router-link>
+      </div>
+
+      <div ref="carouselRef" class="overflow-hidden">
+        <div class="flex transition-transform duration-500 ease-in-out"
+          :style="{ transform: `translateX(${translateX}px)`, gap: '0.25rem' }">
+          <template v-for="repeatIndex in 5" :key="`repeat-${repeatIndex}`">
+            <div v-for="(project, index) in projects" :key="`${repeatIndex}-${project.id}`"
+              class="shrink-0 w-[265px] relative" :style="{
+                width: cardWidth,
+                transform: getCardTransform(repeatIndex, index),
+                opacity: getCardOpacity(repeatIndex, index),
+                transition: 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out'
+              }">
+              <ProjectCard :number="project.id" :title="project.title" :program="project.program"
+                :modules="project.modules" :briefing="project.briefing" :imageUrl="project.imageUrl"
+                :isActive="isActiveSlide(repeatIndex, index)" />
+            </div>
+          </template>
+        </div>
+      </div>
+
+
+      <button @click="prevSlide"
+        class="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-alphaOrange hover:bg-alphaOrangeHover rounded-full flex items-center justify-center transition-all z-10 cursor-pointer">
+        <svg class="w-6 h-6 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+      <button @click="nextSlide"
+        class="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-alphaOrange hover:bg-alphaOrangeHover rounded-full flex items-center justify-center transition-all z-10 cursor-pointer">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+
+    <button @click="viewAllProjects"
+      class="uppercase flex justify-center underline mt-6 mb-8 mx-auto cursor-pointer hover:text-alphaOrange">View
+      all projects</button>
+  </section>
+</template>

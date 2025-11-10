@@ -1,115 +1,3 @@
-<template>
-    <MenuButton title="Go Back" />
-<HeaderBar />
-    <!-- Scroll to Top Button -->
-    <button v-if="showScrollTop" @click="scrollToTop"
-        class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-12 h-12 bg-alphaOrange hover:bg-alphaOrangeHover rounded-full flex items-center justify-center transition-all duration-300 shadow-lg">
-        <svg class="w-6 h-6 rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
-    </button>
-
-    <div class="snap-start flex flex-col min-h-screen md:min-h-fit relative">
-        
-        <div class="-mt-12">
-            <SubTitles mainText="My Projects" backgroundText="Projects" />
-        </div>
-        <div
-            class="uppercase mx-6 md:justify-center flex flex-col gap-1 text-alphaLightBlack font-bold mt-8 md:flex-row md:gap-6">
-            <!-- Mobile: 3 rijen -->
-            <div class="flex gap-4 lg:justify-center md:hidden mb-1">
-                <button @click="filter = 'all'"
-                    :class="['px-3 py-1 rounded transition uppercase cursor-pointer', filter === 'all' ? 'bg-alphaOrange text-white' : 'hover:text-white']">
-                    all
-                </button>
-            </div>
-            <div class="flex gap-4 lg:justify-center md:hidden mb-1">
-                <button @click="filter = 'mct'"
-                    :class="['px-3 py-1 rounded transition uppercase cursor-pointer', filter === 'mct' ? 'bg-alphaOrange text-white' : 'hover:text-white']">
-                    mct
-                </button>
-                <button @click="filter = 'devine'"
-                    :class="['px-3 py-1 rounded transition uppercase cursor-pointer', filter === 'devine' ? 'bg-alphaOrange text-white' : 'hover:text-white']">
-                    devine
-                </button>
-            </div>
-            <div class="flex gap-4 md:justify-center md:hidden">
-                <button @click="filter = 'development'"
-                    :class="['px-3 py-1 rounded transition uppercase cursor-pointer', filter === 'development' ? 'bg-alphaOrange text-white' : 'hover:text-white']">
-                    development
-                </button>
-                <button @click="filter = 'ux'"
-                    :class="['px-3 py-1 rounded transition uppercase cursor-pointer', filter === 'ux' ? 'bg-alphaOrange text-white' : 'hover:text-white']">
-                    ux
-                </button>
-                <button @click="filter = 'design'"
-                    :class="['px-3 py-1 rounded transition uppercase cursor-pointer', filter === 'design' ? 'bg-alphaOrange text-white' : 'hover:text-white']">
-                    design
-                </button>
-            </div>
-            <!-- Desktop: alles in één rij -->
-            <div class="hidden md:flex gap-4">
-                <button v-for="opt in filterOptions" :key="opt" @click="filter = opt"
-                    :class="['px-3 py-1 rounded transition uppercase cursor-pointer', filter === opt ? 'bg-alphaOrange text-white' : 'hover:text-white']">
-                    {{ opt }}
-                </button>
-            </div>
-        </div>
-        <div class="absolute md:hidden top-2/3 left-1/2 -translate-x-1/2">
-            <div class="flex flex-col items-center gap-2">
-                <p class="text-sm tracking-widest uppercase">Scroll Down</p>
-                <svg class="w-4 h-6" viewBox="0 0 16 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8 0L8 22M8 22L1 15M8 22L15 15" stroke="currentColor" stroke-width="2" />
-                </svg>
-            </div>
-        </div>
-    </div>
-
-    <!-- Mobile: Scroll Snap Layout -->
-    <div class="md:hidden">
-        <div v-for="(project, index) in filteredProjects" :key="project.id"
-            :ref="el => { if (el) projectRefs[index] = el }"
-            class="snap-start min-h-screen flex justify-center items-center relative"
-            @click="goToDetail(project.id)"
-            style="cursor: pointer;">
-
-            <!-- Always-on overlay above image, below text -->
-            <div class="w-full flex justify-center px-4 z-10 relative">
-                <ProjectCard :number="project.id" :title="project.title" :program="project.program"
-                    :briefing="project.briefing" :image-url="project.imageUrl" :label="true" :isActive="true" />
-            </div>
-            <div :ref="el => { if (el) textRefs[index] = el }"
-                class="text-center max-w-4xl z-30 absolute top-1/2 -translate-y-1/2 px-4 w-full">
-                <h3 class="text-6xl mb-4 font-secondary">{{ project.title }}</h3>
-                <p class="text-xl text-alphaOrange mb-2">{{ project.program }}</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Desktop: Grid Layout (2 columns) -->
-    <div class="hidden md:grid md:grid-cols-2 2xl:grid-cols-3 gap-8 lg:gap-12 px-8 py-16 lg:px-16 justify-items-center">
-        <div v-for="(project, index) in filteredProjects" :key="project.id"
-            class="flex justify-center items-center py-8">
-            <div class="relative w-[300px] lg:w-[350px] xl:w-[400px] 2xl:w-[480px] h-[450px] lg:h-[500px] xl:h-[550px] 2xl:h-[600px] cursor-pointer group"
-                @mouseenter="handleOverlayEnter($event, index)"
-                @mouseleave="handleOverlayLeave($event, index)" @click="goToDetail(project.id)">
-                <div class="relative w-full h-full overflow-hidden rounded-2xl">
-                    <ProjectCard :number="project.id" :title="project.title" :program="project.program"
-                        :briefing="project.briefing" :image-url="project.imageUrl"
-                        :isActive="true" :showOverlayOnHover="true" class="w-full h-full" />
-                   <!-- Overlay text, always above dark overlay -->
-                    <div class="text-center z-30 absolute top-6 lg:top-1/3 left-1/2 -translate-x-1/2 px-4 w-full pointer-events-none md:pointer-events-auto"
-                        :ref="el => { if (el) desktopOverlayRefs[index] = el }"
-                        style="opacity:0;transform:translateY(32px);">
-                        <h3 class="text-3xl lg:text-4xl xl:text-5xl 2xl:text-7xl mb-2 font-secondary">{{ project.title }}</h3>
-                        <p class="text-base lg:text-lg 2xl:text-2xl text-alphaOrange">{{ project.program }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</template>
-
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { useRouter } from 'vue-router'
@@ -130,6 +18,10 @@ import ProjectCard from '../components/ProjectCard.vue'
 gsap.registerPlugin(ScrollToPlugin)
 
 const router = useRouter()
+const goBack = () => {
+    router.back();
+}
+
 const goToDetail = (id: number) => {
     router.push(`/project/${id}`)
 }
@@ -168,8 +60,6 @@ let touchEndY = 0
 const animateText = (index: number, direction: 'in' | 'out') => {
     const textEl = textRefs.value[index]
     if (!textEl) return
-
-    console.log(`Animating text ${index} - direction: ${direction}`)
 
     // Kill any existing animations on this element
     gsap.killTweensOf(textEl)
@@ -466,3 +356,143 @@ onUnmounted(() => {
     window.removeEventListener('scroll', checkVisibility, true)
 })
 </script>
+<template>
+    <MenuButton title="Go Back" />
+    <HeaderBar />
+    <!-- Scroll to Top Button -->
+    <button v-if="showScrollTop" @click="scrollToTop"
+        class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-12 h-12 bg-alphaOrange hover:bg-alphaOrangeHover rounded-full flex items-center justify-center transition-all duration-300 shadow-lg">
+        <svg class="w-6 h-6 rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+    </button>
+
+    <div class="snap-start flex flex-col min-h-screen md:min-h-fit relative">
+
+        <div class="-mt-12">
+            <SubTitles mainText="My Projects" backgroundText="Projects" />
+        </div>
+        <div class="relative uppercase text-alphaWhite font-bold mt-8 md:w-full">
+  <!-- Terugknop links -->
+  <div class="hidden md:flex items-center absolute left-8 xl:left-32 top-0">
+    <button
+      @click="goBack"
+      class="flex items-center gap-2 px-4 py-2 bg-alphaOrange hover:bg-alphaOrangeHover text-alphaWhite rounded cursor-pointer transition">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+      Back
+    </button>
+  </div>
+
+  <!-- Filters echt in het midden van het scherm -->
+  <div class="hidden md:flex justify-center absolute left-1/2 -translate-x-1/2 top-0">
+    <div class="flex gap-6">
+      <button
+        v-for="opt in filterOptions"
+        :key="opt"
+        @click="filter = opt"
+        :class="[
+          'px-3 py-1 h-8 rounded transition uppercase cursor-pointer',
+          filter === opt
+            ? 'bg-alphaOrange text-alphaWhite'
+            : 'hover:text-alphaOrange'
+        ]"
+      >
+        {{ opt }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobiel -->
+  <div class="flex flex-col gap-2 md:hidden mt-4 mx-6">
+    <button
+      @click="goBack"
+      class="w-fit self-center flex items-center gap-2 px-4 py-2 bg-alphaOrange hover:bg-alphaOrangeHover text-white rounded transition">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+      Terug
+    </button>
+
+    <div class="flex flex-wrap justify-center gap-3 mt-2">
+      <button
+        v-for="opt in filterOptions"
+        :key="opt"
+        @click="filter = opt"
+        :class="[
+          'px-3 py-1 h-8 rounded transition uppercase cursor-pointer',
+          filter === opt
+            ? 'bg-alphaOrange text-alphaWhite'
+            : 'hover:text-alphaOrange'
+        ]"
+      >
+        {{ opt }}
+      </button>
+    </div>
+  </div>
+</div>
+
+        <div class="absolute md:hidden top-2/3 left-1/2 -translate-x-1/2">
+            <div class="flex flex-col items-center gap-2">
+                <p class="text-sm tracking-widest uppercase">Scroll Down</p>
+                <svg class="w-4 h-6" viewBox="0 0 16 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 0L8 22M8 22L1 15M8 22L15 15" stroke="currentColor" stroke-width="2" />
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile: Scroll Snap Layout -->
+    <div class="md:hidden">
+        <div v-for="(project, index) in filteredProjects" :key="project.id"
+            :ref="el => { if (el) projectRefs[index] = el }"
+            class="snap-start min-h-screen flex justify-center items-center relative" @click="goToDetail(project.id)"
+            style="cursor: pointer;">
+
+            <!-- Always-on overlay above image, below text -->
+            <div class="w-full flex justify-center px-4 z-10 relative">
+                <ProjectCard :number="project.id" :title="project.title" :program="project.program"
+                    :briefing="project.briefing" :image-url="project.imageUrl" :label="true" :isActive="true" />
+            </div>
+            <div :ref="el => { if (el) textRefs[index] = el }"
+                class="text-center max-w-4xl z-30 absolute top-1/2 -translate-y-1/2 px-4 w-full">
+                <h3 class="text-6xl mb-4 font-secondary">{{ project.title }}</h3>
+                <div class="flex flex-wrap justify-center gap-2 mb-2">
+                    <span v-for="(mod, idx) in project.modules" :key="idx"
+                        class="text-base text-alphaOrange bg-alphaLightBlack px-2 py-0.5 rounded">
+                        {{ mod }}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Desktop: Grid Layout (2 columns) -->
+    <div class="hidden md:grid md:grid-cols-2 2xl:grid-cols-3 gap-8 lg:gap-12 px-8 py-16 lg:px-16 justify-items-center">
+        <div v-for="(project, index) in filteredProjects" :key="project.id"
+            class="flex justify-center items-center py-8">
+            <div class="relative w-[300px] lg:w-[350px] xl:w-[400px] 2xl:w-[480px] h-[450px] lg:h-[500px] xl:h-[550px] 2xl:h-[600px] cursor-pointer group"
+                @mouseenter="handleOverlayEnter($event, index)" @mouseleave="handleOverlayLeave($event, index)"
+                @click="goToDetail(project.id)">
+                <div class="relative w-full h-full overflow-hidden rounded-2xl">
+                    <ProjectCard :number="project.id" :title="project.title" :program="project.program"
+                        :briefing="project.briefing" :image-url="project.imageUrl" :isActive="true"
+                        :showOverlayOnHover="true" class="w-full h-full" />
+                    <div class="text-center z-30 absolute top-6 lg:top-1/3 left-1/2 -translate-x-1/2 px-4 w-full pointer-events-none md:pointer-events-auto"
+                        :ref="el => { if (el) desktopOverlayRefs[index] = el }"
+                        style="opacity:0;transform:translateY(32px);">
+                        <h3 class="text-3xl lg:text-4xl xl:text-5xl 2xl:text-7xl mb-2 font-secondary">{{ project.title
+                            }}</h3>
+                        <div class="flex flex-wrap justify-center flex-col gap-2 mt-2">
+                            <span v-for="(mod, idx) in project.modules" :key="idx"
+                                class="text-base uppercase lg:text-lg 2xl:text-2xl text-alphaOrange px-2 py-0.5 rounded">
+                                {{ mod }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

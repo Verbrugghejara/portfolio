@@ -9,11 +9,11 @@
       />
       <div
         v-if="showOverlayOnHover"
-        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none"
+        class="absolute inset-0 bg-alphaBlack/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none"
       ></div>
       <div
         v-else
-        class="absolute inset-0 bg-black/40 z-10 pointer-events-none"
+        class="absolute inset-0 bg-alphaBlack/70 z-10 pointer-events-none"
       ></div>
     </div>
     <span
