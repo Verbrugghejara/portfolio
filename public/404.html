@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="refresh" content="0; url=/portfolio/" />
+    <script>
+      // Client-side redirect for SPA (Vue + Vite on GitHub Pages)
+      var path = location.pathname.replace(/^\/portfolio\//, "");
+      location.replace("/portfolio/?" + path + location.search + location.hash);
+    </script>
+  </head>
+  <body></body>
+</html>
