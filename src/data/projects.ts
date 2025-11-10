@@ -76,7 +76,7 @@ We were tasked with designing an <span class="font-bold">integrated concept</spa
     briefing: `Build a native app using React native, where you're integrate at least one of the Expo SDK Components mentioned on https://docs.expo.dev/versions/latest/ (see sidebar below “Expo SDK” - Bonus points for showcasing features which are only available on native apps`,
     githubUrl: "https://github.com/Verbrugghejara/PhoneIt",
     imageUrl: "/portfolio/projects/phoneIt.jpg",
-    video: "/portfolio/projects/phoneIt.mp4",
+    video: "https://youtu.be/s-uXI3lXYmQ",
   },
 ];
 
