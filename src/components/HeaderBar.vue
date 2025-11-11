@@ -36,5 +36,7 @@
 </template>
 
 <script setup lang="ts">
-gsap.registerPlugin(ScrollToPlugin);
+import gsap from 'gsap'
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
+gsap.registerPlugin(ScrollToPlugin)
 </script>

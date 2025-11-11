@@ -12,11 +12,6 @@ import HeaderBar from '../components/HeaderBar.vue'
 import SubTitles from '../components/SubTitles.vue'
 // @ts-ignore
 import ProjectCard from '../components/ProjectCard.vue'
-// @ts-ignore
-// Removed unused import
-import SubTitles from '../components/SubTitles.vue'
-// @ts-ignore
-import ProjectCard from '../components/ProjectCard.vue'
 
 gsap.registerPlugin(ScrollToPlugin)
 
