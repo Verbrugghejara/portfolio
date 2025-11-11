@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue'
 import gsap from 'gsap'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { useRoute } from 'vue-router'
-import { nextTick, watch } from 'vue'
 import { main as projects } from '../data/projects'
 // @ts-ignore
 import MenuButton from '../components/MenuButton.vue'
@@ -24,16 +22,36 @@ import ScrollNav from '../components/ScrollNav.vue'
 
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
 
+
+
+// Custom warning modal voor CV download
+import { ref as vueRef } from 'vue'
+const showCVWarning = vueRef(false)
+const downloadCV = () => {
+  showCVWarning.value = true
+}
+const confirmDownloadCV = () => {
+  showCVWarning.value = false
+  const link = document.createElement('a')
+  link.href = '/portfolio/pdf/CV_Jara_Verbrugghe_2025.pdf'
+  link.download = 'CV_Jara_Verbrugghe_2025.pdf'
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
+}
+const cancelDownloadCV = () => {
+  showCVWarning.value = false
+}
+
 // Scroll naar About Me wanneer ScrollIndicator wordt aangeklikt
 function scrollToAbout() {
-  const aboutSection = document.getElementById('about')
-  const scrollContainer = document.querySelector('.overflow-y-scroll') || window
+  const aboutSection = document.getElementById('about');
   if (aboutSection) {
-    gsap.to(scrollContainer, {
+    gsap.to(window, {
       duration: 1,
       scrollTo: { y: aboutSection, offsetY: 0 },
       ease: 'power2.inOut',
-    })
+    });
   }
 }
 
@@ -419,7 +437,9 @@ onUnmounted(() => {
         <div class="mt-12 text-center font-bold hidden lg:block">
           <p>Want to know more about me?</p>
           <button
-            class="mt-2 px-4 py-2 bg-alphaOrange hover:bg-alphaOrangeHover cursor-pointer uppercase text-white rounded-md">Resume</button>
+            class="mt-2 px-4 py-2 bg-alphaOrange hover:bg-alphaOrangeHover cursor-pointer uppercase text-white rounded-md"
+            @click="downloadCV"
+          >Resume</button>
         </div>
 
       </div>
@@ -472,7 +492,18 @@ onUnmounted(() => {
     </div>
     <div class="mt-12 text-center font-bold lg:hidden">
       <p>Want to know more about me?</p>
-      <button class="mt-2 px-4 py-2 bg-alphaOrange uppercase text-white rounded-md">Resume</button>
+      <button class="mt-2 px-4 py-2 bg-alphaOrange uppercase text-white rounded-md" @click="downloadCV">Resume</button>
+    </div>
+
+    <!-- Custom CV download warning modal -->
+    <div v-if="showCVWarning" class="fixed inset-0 z-50 flex items-center justify-center bg-alphaBlack/75 bg-opacity-50">
+      <div class="bg-alphaLightBlack rounded-lg shadow-lg p-8 max-w-xs w-full text-center">
+        <p class="mb-6 text-lg font-bold text-alphaWhite">Would you like to download my CV?</p>
+        <div class="flex justify-center gap-4">
+          <button @click="confirmDownloadCV" class="px-4 py-2 bg-alphaOrange text-alphaWhite rounded cursor-pointer hover:bg-alphaOrangeHover">Download</button>
+          <button @click="cancelDownloadCV" class="px-4 py-2 bg-alphaWhite text-alphaBlack rounded cursor-pointer hover:bg-gray-200">Cancel</button>
+        </div>
+      </div>
     </div>
   </section>
   <section id="skills" ref="skillsSection" class="py-12 ">

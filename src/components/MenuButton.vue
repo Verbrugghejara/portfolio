@@ -58,10 +58,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-defineProps<{
-  title: string
-}>()
-
+const props = defineProps<{ title: string }>()
 const router = useRouter()
 const isOpen = ref(false)
 
@@ -71,15 +68,15 @@ const menuItems = [
   { label: 'Projects', href: '#projects' }
 ]
 
-const toggleMenu = () => {
+function toggleMenu() {
   isOpen.value = !isOpen.value
 }
 
-const closeMenu = () => {
+function closeMenu() {
   isOpen.value = false
 }
 
-const goBack = () => {
+function goBack() {
   router.back()
 }
 </script>

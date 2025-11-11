@@ -54,7 +54,7 @@
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowfullscreen
-                        class="rounded-md shadow-md max-h-80 max-w-full w-full aspect-video bg-black"
+                        class="rounded-md shadow-md max-h-80 max-w-full w-full aspect-video bg-alphaBlack"
                     ></iframe>
                 </div>
 
@@ -76,26 +76,20 @@ function getYoutubeEmbedUrl(url: string): string {
     // fallback: return original url
     return url;
 }
-import { onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
+import { computed } from 'vue'
+import { projects } from '../data/projects'
+// @ts-ignore
+import SubTitles from '../components/SubTitles.vue'
+// @ts-ignore
+import HeaderBar from '../components/HeaderBar.vue'
+// @ts-ignore
+import MenuButton from '../components/MenuButton.vue'
+
 const router = useRouter()
 const goBack = () => {
-    router.back();
+    router.back()
 }
-onMounted(() => {
-    const scrollContainer = document.querySelector('.overflow-y-scroll')
-    if (scrollContainer) {
-        scrollContainer.scrollTo({ top: 0, behavior: 'auto' })
-    } else {
-        window.scrollTo({ top: 0, behavior: 'auto' })
-    }
-})
-import { useRoute } from 'vue-router'
-import { computed } from 'vue'
-import { projects } from '../data/projects' // @ts-ignore
-import SubTitles from '../components/SubTitles.vue'// @ts-ignore
-import HeaderBar from '../components/HeaderBar.vue'// @ts-ignore
-import MenuButton from '../components/MenuButton.vue'
 
 const route = useRoute()
 const id = computed(() => Number(route.params.id))

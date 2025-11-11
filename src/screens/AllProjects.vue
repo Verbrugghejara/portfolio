@@ -9,8 +9,6 @@ import MenuButton from '../components/MenuButton.vue'
 // @ts-ignore
 import HeaderBar from '../components/HeaderBar.vue'
 // @ts-ignore
-import ScrollIndicator from '../components/ScrollIndicator.vue'
-// @ts-ignore
 import SubTitles from '../components/SubTitles.vue'
 // @ts-ignore
 import ProjectCard from '../components/ProjectCard.vue'
