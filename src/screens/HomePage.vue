@@ -429,10 +429,10 @@ onUnmounted(() => {
     <div class="lg:flex lg:flex-row-reverse lg:justify-center lg:gap-[5%] xl:gap-[15%] lg:items-center">
       <div>
         <div class="relative flex justify-center items-center h-96">
-          <div
-            class="absolute top-13 left-1/2 -translate-x-[calc(50%-2rem)] translate-y-4 w-64 h-80 border-6 border-alphaOrange rounded-2xl">
+          <div class="absolute top-8 left-1/2 -translate-x-2/5 w-64 translate-y-6 h-80 border-8 border-alphaOrange rounded-3xl z-0"></div>
+          <div class="relative w-64 h-80 bg-alphaWhite rounded-3xl shadow-xl flex items-center justify-center overflow-hidden z-10">
+            <img src="/profielFoto.jpg" alt="Jara Verbrugghe" class="object-cover w-full h-full rounded-3xl" />
           </div>
-          <div class="relative w-64 h-80 bg-alphaWhite rounded-2xl shadow-lg"></div>
         </div>
         <div class="mt-12 text-center font-bold hidden lg:block">
           <p>Want to know more about me?</p>
