@@ -38,7 +38,7 @@
           ></span>
         </div>
         
-  <span class="text-lg inline-block" style="min-width: 60px; text-align: left;">{{ isOpen ? 'Close' : 'Menu' }}</span>
+  <span class="text-lg inline-block" style=" text-align: left;">{{ isOpen ? 'Close' : 'Menu' }}</span>
       </button>
     </template>
 

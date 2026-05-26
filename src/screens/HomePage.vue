@@ -24,7 +24,6 @@ gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
 
 
 
-// Custom warning modal voor CV download
 import { ref as vueRef } from 'vue'
 const showCVWarning = vueRef(false)
 const downloadCV = () => {
@@ -43,17 +42,16 @@ const cancelDownloadCV = () => {
   showCVWarning.value = false
 }
 
-// Scroll naar About Me wanneer ScrollIndicator wordt aangeklikt
-function scrollToAbout() {
-  const aboutSection = document.getElementById('about');
-  if (aboutSection) {
-    gsap.to(window, {
-      duration: 1,
-      scrollTo: { y: aboutSection, offsetY: 0 },
-      ease: 'power2.inOut',
-    });
-  }
-}
+// function scrollToAbout() {
+//   const aboutSection = document.getElementById('about');
+//   if (aboutSection) {
+//     gsap.to(window, {
+//       duration: 1,
+//       scrollTo: { y: aboutSection, offsetY: 0 },
+//       ease: 'power2.inOut',
+//     });
+//   }
+// }
 
 const router = useRouter()
 function viewAllProjects() {
@@ -68,26 +66,7 @@ function viewAllProjects() {
   })
 }
 
-const route = useRoute()
-watch(
-  () => route.hash,
-  async (hash) => {
-    if (hash) {
-      await nextTick()
-      const id = hash.replace('#', '')
-      const scrollContainer = document.querySelector('.overflow-y-scroll') || window
-      const section = document.getElementById(id) || document.querySelector(hash)
-      if (section) {
-        gsap.to(scrollContainer, {
-          duration: 1,
-          scrollTo: { y: section, offsetY: 0 },
-          ease: 'power2.inOut',
-        })
-      }
-    }
-  },
-  { immediate: true }
-)
+// Scroll naar anchors bij hash-wijziging is uitgeschakeld
 
 const carouselRef = ref<HTMLElement | null>(null)
 const textOverlay = ref<HTMLElement | null>(null)
@@ -308,27 +287,28 @@ const handleScroll = (event: Event) => {
   const target = event.target as HTMLElement
   const scrollTop = target.scrollTop
 
-  if (scrollTop > 5) {
-    isSnapping = true
-    hasSnapped = true
-
-    const aboutSection = document.querySelector('section')
-
-    if (aboutSection) {
-      gsap.to(target, {
-        duration: 0.6,
-        scrollTo: { y: aboutSection, autoKill: false },
-        ease: 'power2.out',
-        onComplete: () => {
-          isSnapping = false
-          const scrollContainer = document.querySelector('.overflow-y-scroll')
-          if (scrollContainer) {
-            scrollContainer.removeEventListener('scroll', handleScroll)
-          }
-        }
-      })
-    }
-  }
+  // Automatische scroll naar about is uitgeschakeld
+  // if (scrollTop > 5) {
+  //   isSnapping = true
+  //   hasSnapped = true
+  //
+  //   const aboutSection = document.querySelector('section')
+  //
+  //   if (aboutSection) {
+  //     gsap.to(target, {
+  //       duration: 0.6,
+  //       scrollTo: { y: aboutSection, autoKill: false },
+  //       ease: 'power2.out',
+  //       onComplete: () => {
+  //         isSnapping = false
+  //         const scrollContainer = document.querySelector('.overflow-y-scroll')
+  //         if (scrollContainer) {
+  //           scrollContainer.removeEventListener('scroll', handleScroll)
+  //         }
+  //       }
+  //     })
+  //   }
+  // }
 }
 
 onMounted(() => {
@@ -421,7 +401,7 @@ onUnmounted(() => {
       class="absolute lg:hidden text-[clamp(20rem,80vw,50rem)] uppercase font-bold text-outline-xl -left-[35%] bottom-0 -z-10 -tracking-[0.12em]">
       &lt;/&gt;</p>
     <div class="absolute right-2 sm:right-4 bottom-6">
-      <ScrollIndicator class="hover:text-alphaOrange cursor-pointer" @scrollToAbout="scrollToAbout" />
+      <ScrollIndicator class="hover:text-alphaOrange cursor-pointer" />
     </div>
   </header>
   <section id="about" class="mx-6 md:mx-12 lg:mx-16 2xl:mx-32">
