@@ -24,7 +24,6 @@ gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
 
 
 
-// Custom warning modal voor CV download
 import { ref as vueRef } from 'vue'
 const showCVWarning = vueRef(false)
 const downloadCV = () => {
@@ -43,11 +42,12 @@ const cancelDownloadCV = () => {
   showCVWarning.value = false
 }
 
-// Scroll naar About Me wanneer ScrollIndicator wordt aangeklikt
+
 function scrollToAbout() {
   const aboutSection = document.getElementById('about');
   if (aboutSection) {
-    gsap.to(window, {
+    const scrollContainer = document.querySelector('.overflow-y-scroll') || window;
+    gsap.to(scrollContainer, {
       duration: 1,
       scrollTo: { y: aboutSection, offsetY: 0 },
       ease: 'power2.inOut',
@@ -68,26 +68,7 @@ function viewAllProjects() {
   })
 }
 
-const route = useRoute()
-watch(
-  () => route.hash,
-  async (hash) => {
-    if (hash) {
-      await nextTick()
-      const id = hash.replace('#', '')
-      const scrollContainer = document.querySelector('.overflow-y-scroll') || window
-      const section = document.getElementById(id) || document.querySelector(hash)
-      if (section) {
-        gsap.to(scrollContainer, {
-          duration: 1,
-          scrollTo: { y: section, offsetY: 0 },
-          ease: 'power2.inOut',
-        })
-      }
-    }
-  },
-  { immediate: true }
-)
+// Scroll naar anchors bij hash-wijziging is uitgeschakeld
 
 const carouselRef = ref<HTMLElement | null>(null)
 const textOverlay = ref<HTMLElement | null>(null)
@@ -308,27 +289,28 @@ const handleScroll = (event: Event) => {
   const target = event.target as HTMLElement
   const scrollTop = target.scrollTop
 
-  if (scrollTop > 5) {
-    isSnapping = true
-    hasSnapped = true
-
-    const aboutSection = document.querySelector('section')
-
-    if (aboutSection) {
-      gsap.to(target, {
-        duration: 0.6,
-        scrollTo: { y: aboutSection, autoKill: false },
-        ease: 'power2.out',
-        onComplete: () => {
-          isSnapping = false
-          const scrollContainer = document.querySelector('.overflow-y-scroll')
-          if (scrollContainer) {
-            scrollContainer.removeEventListener('scroll', handleScroll)
-          }
-        }
-      })
-    }
-  }
+  // Automatische scroll naar about is uitgeschakeld
+  // if (scrollTop > 5) {
+  //   isSnapping = true
+  //   hasSnapped = true
+  //
+  //   const aboutSection = document.querySelector('section')
+  //
+  //   if (aboutSection) {
+  //     gsap.to(target, {
+  //       duration: 0.6,
+  //       scrollTo: { y: aboutSection, autoKill: false },
+  //       ease: 'power2.out',
+  //       onComplete: () => {
+  //         isSnapping = false
+  //         const scrollContainer = document.querySelector('.overflow-y-scroll')
+  //         if (scrollContainer) {
+  //           scrollContainer.removeEventListener('scroll', handleScroll)
+  //         }
+  //       }
+  //     })
+  //   }
+  // }
 }
 
 onMounted(() => {
@@ -381,7 +363,7 @@ onUnmounted(() => {
 </script>
 <template>
   <header id="home" class="relative min-h-screen">
-    <MenuButton title="Menu" />
+    <MenuButton title="MENU" />
     <HeaderBar />
     <ScrollNav />
 

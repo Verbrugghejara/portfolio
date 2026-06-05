@@ -1,7 +1,7 @@
 <template>
   <div class="lg:hidden fixed bottom-5 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center gap-3">
     <!-- Alleen tonen als title === 'Menu' -->
-    <Transition name="menu-items" v-if="title === 'Menu'">
+    <Transition name="menu-items" v-if="title === 'MENU'">
       <div v-if="isOpen" class="flex flex-col gap-3 mb-2">
         <a 
           v-for="(item, index) in menuItems" 
@@ -17,7 +17,7 @@
     </Transition>
 
     <!-- Menu Button -->
-    <template v-if="title === 'Menu'">
+    <template v-if="title === 'MENU'">
       <button 
         @click="toggleMenu"
         class="border-2 border-alphaWhite bg-alphaLightBlack rounded-md px-4 py-3 flex items-center gap-3 transition-all duration-300 hover:border-alphaOrange"
@@ -38,7 +38,7 @@
           ></span>
         </div>
         
-  <span class="text-lg inline-block" style="min-width: 60px; text-align: left;">{{ isOpen ? 'Close' : 'Menu' }}</span>
+  <span class="text-lg inline-block" style=" text-align: left;">{{ isOpen ? 'Close' : 'MENU' }}</span>
       </button>
     </template>
 

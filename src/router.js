@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 
 import HomePage from './screens/HomePage.vue'
 import Projects from './screens/AllProjects.vue'
@@ -10,17 +10,10 @@ const routes = [
   { path: '/project/:id', component: DetailProject }
 ]
 
+
 const router = createRouter({
-  history: createWebHashHistory('/portfolio/'),
-  routes,
-  scrollBehavior(to, from, savedPosition) {
-    // Als er een opgeslagen positie is (zoals bij router.back()), ga daarheen
-    if (savedPosition) {
-      return savedPosition
-    }
-    // Anders, scroll naar boven
-    return { top: 0 }
-  },
+  history: createWebHistory('/portfolio/'),
+  routes
 })
 
 export default router
