@@ -42,16 +42,18 @@ const cancelDownloadCV = () => {
   showCVWarning.value = false
 }
 
-// function scrollToAbout() {
-//   const aboutSection = document.getElementById('about');
-//   if (aboutSection) {
-//     gsap.to(window, {
-//       duration: 1,
-//       scrollTo: { y: aboutSection, offsetY: 0 },
-//       ease: 'power2.inOut',
-//     });
-//   }
-// }
+
+function scrollToAbout() {
+  const aboutSection = document.getElementById('about');
+  if (aboutSection) {
+    const scrollContainer = document.querySelector('.overflow-y-scroll') || window;
+    gsap.to(scrollContainer, {
+      duration: 1,
+      scrollTo: { y: aboutSection, offsetY: 0 },
+      ease: 'power2.inOut',
+    });
+  }
+}
 
 const router = useRouter()
 function viewAllProjects() {
@@ -361,7 +363,7 @@ onUnmounted(() => {
 </script>
 <template>
   <header id="home" class="relative min-h-screen">
-    <MenuButton title="Menu" />
+    <MenuButton title="MENU" />
     <HeaderBar />
     <ScrollNav />
 
@@ -401,7 +403,7 @@ onUnmounted(() => {
       class="absolute lg:hidden text-[clamp(20rem,80vw,50rem)] uppercase font-bold text-outline-xl -left-[35%] bottom-0 -z-10 -tracking-[0.12em]">
       &lt;/&gt;</p>
     <div class="absolute right-2 sm:right-4 bottom-6">
-      <ScrollIndicator class="hover:text-alphaOrange cursor-pointer" />
+      <ScrollIndicator class="hover:text-alphaOrange cursor-pointer" @scrollToAbout="scrollToAbout" />
     </div>
   </header>
   <section id="about" class="mx-6 md:mx-12 lg:mx-16 2xl:mx-32">
