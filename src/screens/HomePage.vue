@@ -520,8 +520,8 @@ onUnmounted(() => {
           class="inline-block group pointer-events-auto">
           <h3 class="text-5xl mb-4 font-secondary text-center">{{ projects[currentSlide % totalSlides].title }}</h3>
           <div>
-            <p v-for="(m, idx) in projects[currentSlide % totalSlides].modules" :key="`module-${idx}`"
-              class="text-xl text-alphaOrange font-bold mb-2">{{ m }}</p>
+            <p v-for="(tag, idx) in projects[currentSlide % totalSlides].tags" :key="`tag-${idx}`"
+              class="text-xl text-alphaOrange font-bold mb-2">{{ tag }}</p>
           </div>
         </router-link>
       </div>
@@ -538,7 +538,7 @@ onUnmounted(() => {
                 transition: 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out'
               }">
               <ProjectCard :number="project.id" :title="project.title" :program="project.program"
-                :modules="project.modules" :briefing="project.briefing" :imageUrl="project.imageUrl"
+                :briefing="project.briefing" :imageUrl="project.imageUrl"
                 :isActive="isActiveSlide(repeatIndex, index)" />
             </div>
           </template>

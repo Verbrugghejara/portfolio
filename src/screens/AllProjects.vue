@@ -320,9 +320,9 @@ const filteredProjects = computed(() => {
     if (filter.value === 'all') return projects
     if (filter.value === 'mct') return projects.filter(p => (p.program || '').toLowerCase() === 'mct')
     if (filter.value === 'devine') return projects.filter(p => (p.program || '').toLowerCase() === 'devine')
-    if (filter.value === 'development') return projects.filter(p => (p.modules || []).map(m => m.toLowerCase()).includes('development'))
-    if (filter.value === 'ux') return projects.filter(p => (p.modules || []).map(m => m.toLowerCase()).includes('ux'))
-    if (filter.value === 'design') return projects.filter(p => (p.modules || []).map(m => m.toLowerCase()).includes('design'))
+    if (filter.value === 'development') return projects.filter(p => (p.tags || []).map(t => t.toLowerCase()).includes('development'))
+    if (filter.value === 'ux') return projects.filter(p => (p.tags || []).map(t => t.toLowerCase()).includes('ux'))
+    if (filter.value === 'design') return projects.filter(p => (p.tags || []).map(t => t.toLowerCase()).includes('design'))
     return projects
 })
 
@@ -457,9 +457,9 @@ onUnmounted(() => {
                 class="text-center max-w-4xl z-30 absolute top-1/2 -translate-y-1/2 px-4 w-full">
                 <h3 class="text-6xl mb-4 font-secondary">{{ project.title }}</h3>
                 <div class="flex flex-wrap justify-center gap-2 mb-2">
-                    <span v-for="(mod, idx) in project.modules" :key="idx"
+                    <span v-for="(tag, idx) in project.tags" :key="idx"
                         class="text-base text-alphaOrange bg-alphaLightBlack px-2 py-0.5 rounded">
-                        {{ mod }}
+                        {{ tag }}
                     </span>
                 </div>
             </div>
@@ -483,9 +483,9 @@ onUnmounted(() => {
                         <h3 class="text-3xl lg:text-4xl xl:text-5xl 2xl:text-7xl mb-2 font-secondary">{{ project.title
                             }}</h3>
                         <div class="flex flex-wrap justify-center flex-col gap-2 mt-2">
-                            <span v-for="(mod, idx) in project.modules" :key="idx"
+                            <span v-for="(tag, idx) in project.tags" :key="idx"
                                 class="text-base uppercase lg:text-lg 2xl:text-2xl text-alphaOrange px-2 py-0.5 rounded">
-                                {{ mod }}
+                                {{ tag }}
                             </span>
                         </div>
                     </div>
