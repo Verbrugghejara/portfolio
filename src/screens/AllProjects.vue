@@ -317,13 +317,20 @@ const checkVisibility = () => {
 const filter = ref('all')
 const filterOptions = ['all', 'mct', 'devine', 'development', 'ux', 'design']
 const filteredProjects = computed(() => {
-    if (filter.value === 'all') return projects
-    if (filter.value === 'mct') return projects.filter(p => (p.program || '').toLowerCase() === 'mct')
-    if (filter.value === 'devine') return projects.filter(p => (p.program || '').toLowerCase() === 'devine')
-    if (filter.value === 'development') return projects.filter(p => (p.modules || []).map(m => m.toLowerCase()).includes('development'))
-    if (filter.value === 'ux') return projects.filter(p => (p.modules || []).map(m => m.toLowerCase()).includes('ux'))
-    if (filter.value === 'design') return projects.filter(p => (p.modules || []).map(m => m.toLowerCase()).includes('design'))
-    return projects
+    let result = projects
+    if (filter.value === 'all') result = projects.slice()
+    else if (filter.value === 'mct') result = projects.filter(p => (p.program || '').toLowerCase() === 'mct')
+    else if (filter.value === 'devine') result = projects.filter(p => (p.program || '').toLowerCase() === 'devine')
+    else if (filter.value === 'development') result = projects.filter(p => (p.tags || []).map(t => t.toLowerCase()).includes('development'))
+    else if (filter.value === 'ux') result = projects.filter(p => (p.tags || []).map(t => t.toLowerCase()).includes('ux'))
+    else if (filter.value === 'design') result = projects.filter(p => (p.tags || []).map(t => t.toLowerCase()).includes('design'))
+
+    // Sort by date descending (newest first). Projects should have a `date` field (ISO string).
+    return result.slice().sort((a: any, b: any) => {
+        const da = a.date ? new Date(a.date).getTime() : 0
+        const db = b.date ? new Date(b.date).getTime() : 0
+        return db - da
+    })
 })
 
 onMounted(() => {
@@ -457,11 +464,12 @@ onUnmounted(() => {
                 class="text-center max-w-4xl z-30 absolute top-1/2 -translate-y-1/2 px-4 w-full">
                 <h3 class="text-6xl mb-4 font-secondary">{{ project.title }}</h3>
                 <div class="flex flex-wrap justify-center gap-2 mb-2">
-                    <span v-for="(mod, idx) in project.modules" :key="idx"
+                    <span v-for="(tag, idx) in project.tags" :key="idx"
                         class="text-base text-alphaOrange bg-alphaLightBlack px-2 py-0.5 rounded">
-                        {{ mod }}
+                        {{ tag }}
                     </span>
                 </div>
+                <p class="text-sm text-alphaLightBlack mb-4">{{ new Date(project.date).toLocaleDateString() }}</p>
             </div>
         </div>
     </div>
@@ -482,10 +490,11 @@ onUnmounted(() => {
                         style="opacity:0;transform:translateY(32px);">
                         <h3 class="text-3xl lg:text-4xl xl:text-5xl 2xl:text-7xl mb-2 font-secondary">{{ project.title
                             }}</h3>
+                        <p class="text-sm uppercase text-alphaLightBlack mt-2">{{ new Date(project.date).toLocaleDateString() }}</p>
                         <div class="flex flex-wrap justify-center flex-col gap-2 mt-2">
-                            <span v-for="(mod, idx) in project.modules" :key="idx"
+                            <span v-for="(tag, idx) in project.tags" :key="idx"
                                 class="text-base uppercase lg:text-lg 2xl:text-2xl text-alphaOrange px-2 py-0.5 rounded">
-                                {{ mod }}
+                                {{ tag }}
                             </span>
                         </div>
                     </div>

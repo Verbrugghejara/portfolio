@@ -5,7 +5,7 @@
         <button
           @click="scrollToSection(section.id)"
           :class="[
-            'bg-transparent border-none text-alphaLightBlack text-base cursor-pointer transition-colors transition-transform duration-200 font-semibold',
+            'bg-transparent border-none text-alphaMediumBlack text-base cursor-pointer transition-colors transition-transform duration-200 font-semibold',
             activeSection === section.id
               ? 'text-alphaWhite font-bold scale-110'
               : 'hover:text-orange-500'
