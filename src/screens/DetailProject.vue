@@ -297,7 +297,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, onMounted, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { projects } from '../data/projects'
 
@@ -324,6 +324,21 @@ function getYoutubeEmbedUrl(url: string): string {
 }
 
 const router = useRouter()
+
+onMounted(() => {
+    nextTick(() => {
+        const scrollContainer = document.querySelector('.overflow-y-scroll')
+
+        if (scrollContainer) {
+            ;(scrollContainer as HTMLElement).scrollTop = 0
+        } else {
+            window.scrollTo({
+                top: 0,
+                behavior: 'auto'
+            })
+        }
+    })
+})
 
 const goBack = () => {
     router.back()
