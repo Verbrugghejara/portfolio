@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useRouter, useRoute } from 'vue-router'
-import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue'
+import { useRouter } from 'vue-router'
+import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
 import gsap from 'gsap'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -22,7 +22,17 @@ import ScrollNav from '../components/ScrollNav.vue'
 
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
 
+const router = useRouter()
+const saveScrollPosition = () => {
+  const scrollContainer = document.querySelector('.overflow-y-scroll')
 
+  if (scrollContainer) {
+    sessionStorage.setItem(
+      'homeScrollPosition',
+      String((scrollContainer as HTMLElement).scrollTop)
+    )
+  }
+}
 
 import { ref as vueRef } from 'vue'
 const showCVWarning = vueRef(false)
@@ -55,8 +65,9 @@ function scrollToAbout() {
   }
 }
 
-const router = useRouter()
 function viewAllProjects() {
+  saveScrollPosition()
+
   router.push('/projects').then(() => {
     // Scroll to top after navigation
     const scrollContainer = document.querySelector('.overflow-y-scroll') || window
@@ -212,6 +223,8 @@ const prevSlide = () => {
 // Touch/Swipe functionality
 let touchStartX = 0
 let touchEndX = 0
+let isMouseDragging = false
+let mouseStartX = 0
 
 const handleTouchStart = (e: TouchEvent) => {
   touchStartX = e.changedTouches[0].screenX
@@ -220,6 +233,40 @@ const handleTouchStart = (e: TouchEvent) => {
 const handleTouchEnd = (e: TouchEvent) => {
   touchEndX = e.changedTouches[0].screenX
   handleSwipe()
+}
+
+const handleMouseDown = (e: MouseEvent) => {
+  isMouseDragging = true
+  mouseStartX = e.clientX
+  if (carouselRef.value) {
+    carouselRef.value.style.cursor = 'grabbing'
+  }
+}
+
+const handleMouseUp = () => {
+  isMouseDragging = false
+  if (carouselRef.value) {
+    carouselRef.value.style.cursor = 'grab'
+  }
+}
+
+const handleMouseMove = (e: MouseEvent) => {
+  if (!isMouseDragging) return
+  
+  const diff = mouseStartX - e.clientX
+  const dragThreshold = 50
+  
+  if (Math.abs(diff) > dragThreshold) {
+    if (diff > 0) {
+      // Dragged left - next slide
+      nextSlide()
+    } else {
+      // Dragged right - prev slide
+      prevSlide()
+    }
+    isMouseDragging = false
+    handleMouseUp()
+  }
 }
 
 const handleSwipe = () => {
@@ -321,10 +368,15 @@ onMounted(() => {
     gsap.set(textOverlay.value, { y: 0, opacity: 1 })
   }
 
-  // Add touch event listeners for swipe
+  // Add touch and mouse event listeners for swipe/drag
   if (carouselRef.value) {
     carouselRef.value.addEventListener('touchstart', handleTouchStart, { passive: true })
     carouselRef.value.addEventListener('touchend', handleTouchEnd, { passive: true })
+    carouselRef.value.addEventListener('mousedown', handleMouseDown, { passive: true })
+    carouselRef.value.addEventListener('mousemove', handleMouseMove, { passive: true })
+    carouselRef.value.addEventListener('mouseup', handleMouseUp, { passive: true })
+    carouselRef.value.addEventListener('mouseleave', handleMouseUp, { passive: true })
+    carouselRef.value.style.cursor = 'grab'
   }
 
   const scrollContainer = document.querySelector('.overflow-y-scroll')
@@ -342,6 +394,14 @@ onMounted(() => {
         }
       })
     }
+nextTick(() => {
+  const saved = sessionStorage.getItem('homeScrollPosition')
+
+  if (saved) {
+    ;(scrollContainer as HTMLElement).scrollTop = Number(saved)
+    sessionStorage.removeItem('homeScrollPosition')
+  }
+})
   }
 })
 
@@ -349,10 +409,14 @@ onUnmounted(() => {
   stopAutoPlay()
   stopTypewriter()
 
-  // Remove touch event listeners
+  // Remove touch and mouse event listeners
   if (carouselRef.value) {
     carouselRef.value.removeEventListener('touchstart', handleTouchStart)
     carouselRef.value.removeEventListener('touchend', handleTouchEnd)
+    carouselRef.value.removeEventListener('mousedown', handleMouseDown)
+    carouselRef.value.removeEventListener('mousemove', handleMouseMove)
+    carouselRef.value.removeEventListener('mouseup', handleMouseUp)
+    carouselRef.value.removeEventListener('mouseleave', handleMouseUp)
   }
 
   const scrollContainer = document.querySelector('.overflow-y-scroll')
@@ -516,7 +580,7 @@ onUnmounted(() => {
     <div class="relative overflow-hidden">
       <div ref="textOverlay"
         class="absolute inset-0 w-full h-full flex flex-col items-center justify-center text-center z-20 pointer-events-none">
-        <router-link :to="`/project/${projects[currentSlide % totalSlides].id}`"
+        <router-link :to="`/project/${projects[currentSlide % totalSlides].id}`" @click="saveScrollPosition"
           class="inline-block group pointer-events-auto">
           <h3 class="text-5xl mb-4 font-secondary text-center">{{ projects[currentSlide % totalSlides].title }}</h3>
           <div>
@@ -537,9 +601,13 @@ onUnmounted(() => {
                 opacity: getCardOpacity(repeatIndex, index),
                 transition: 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out'
               }">
-              <ProjectCard :number="project.id" :title="project.title" :program="project.program"
-                :briefing="project.briefing" :imageUrl="project.imageUrl"
-                :isActive="isActiveSlide(repeatIndex, index)" />
+              <router-link :to="`/project/${project.id}`" 
+                @click="saveScrollPosition"
+                class="block h-full pointer-events-auto">
+                <ProjectCard :number="project.id" :title="project.title" :program="project.program"
+                  :briefing="project.briefing" :imageUrl="project.imageUrl"
+                  :isActive="isActiveSlide(repeatIndex, index)" />
+              </router-link>
             </div>
           </template>
         </div>
