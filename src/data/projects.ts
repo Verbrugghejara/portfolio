@@ -132,4 +132,4 @@ githubUrl: "https://github.com/Verbrugghejara/bap-devine",
   }
 ];
 
-export const main = projects.filter(p => p.id >= 1 && p.id <= 6);
+export const main = projects;
