@@ -47,7 +47,7 @@
                         v-if="project.imageUrl"
                         :src="project.imageUrl"
                         alt="Project afbeelding"
-                        class="w-full h-full object-contain" />
+                        class="w-full h-full object-cover" />
                 </div>
 
             </div>
@@ -178,6 +178,7 @@
                         </div>
 
                         <button
+                            v-if="showBriefingToggle"
                             @click="briefingExpanded = !briefingExpanded"
                             class="mt-4 text-alphaOrange hover:text-alphaOrangeHover font-semibold flex items-center gap-2 transition cursor-pointer">
 
@@ -252,17 +253,29 @@
         <section
             v-if="project.video"
             class="mt-16">
-
-            <h3
-                class="uppercase font-bold text-2xl mb-4">
-                Demo
-            </h3>
-
             <div
                 class="overflow-hidden rounded-xl shadow-lg">
 
                 <iframe
-                    :src="getYoutubeEmbedUrl(project.video)"
+                    v-if="isYoutubeVideo"
+                    :src="youtubeEmbedUrl"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                    class="w-full aspect-video bg-alphaBlack">
+                </iframe>
+
+                <video
+                    v-else-if="isMp4Video"
+                    controls
+                    class="w-full aspect-video bg-alphaBlack">
+                    <source :src="project.video" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+
+                <iframe
+                    v-else
+                    :src="project.video"
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen
@@ -327,6 +340,27 @@ const project = computed(() =>
         p => p.id === id.value
     )
 )
+
+const youtubeEmbedUrl = computed(() =>
+    project.value?.video ? getYoutubeEmbedUrl(project.value.video) : ''
+)
+
+const isYoutubeVideo = computed(() =>
+    !!project.value?.video && /(?:youtube\.com\/|youtu\.be\/)/i.test(project.value.video)
+)
+
+const isMp4Video = computed(() =>
+    !!project.value?.video && project.value.video.trim().toLowerCase().endsWith('.mp4')
+)
+
+const showBriefingToggle = computed(() => {
+    if (!project.value?.briefing) {
+        return false
+    }
+
+    const briefingText = project.value.briefing.replace(/<[^>]+>/g, '').trim()
+    return briefingText.length > 240
+})
 
 const briefingExpanded = ref(false)
 </script>

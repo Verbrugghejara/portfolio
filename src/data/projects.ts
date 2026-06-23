@@ -2,6 +2,7 @@ export const projects = [
   {
     id: 1,
     title: "The Easy Cat Set",
+    date: "2020-05-12",
     program: "MCT",
     tags: ["Development", "Design"],
     projectType: "Individueel project",
@@ -26,6 +27,7 @@ export const projects = [
   {
     id: 2,
     title: "Padelscoreboard",
+    date: "2021-03-20",
     program: "MCT",
     tags: ["Development"],
     roles: ["Embedded Software Developer (watch)"],
@@ -43,6 +45,7 @@ export const projects = [
   {
     id: 3,
     title: "Kinepolis ATM 3.0",
+    date: "2022-01-15",
     program: "MCT",
     tags: ["Development", "Design"],
     roles: ["Front-end developer"],
@@ -59,6 +62,7 @@ export const projects = [
   {
     id: 4,
     title: "Jan Moretus",
+    date: "2024-09-05",
     program: "DEVINE",
     tags: ["Development", "Design"],
     projectType: "Individueel project",
@@ -74,6 +78,7 @@ export const projects = [
   {
     id: 5,
     title: "ABBY",
+    date: "2024-06-10",
     program: "DEVINE",
     tags: ["Development", "Design", "UX"],
     roles: ["Backend developer", "Front-end developer"],
@@ -96,6 +101,7 @@ We were tasked with designing an <span class="font-bold">integrated concept</spa
   {
     id: 6,
     title: "Phone it",
+    date: "2024-02-28",
     program: "DEVINE",
     tags: ["Development"],
     roles: ["Mobile developer"],
@@ -106,6 +112,24 @@ We were tasked with designing an <span class="font-bold">integrated concept</spa
     imageUrl: "/portfolio/projects/phoneIt.jpg",
     video: "https://youtu.be/s-uXI3lXYmQ",
   },
+  {
+    id: 7,
+    title: "Journey to the upperworld",
+    date: "2025-12-10",
+    program: "DEVINE",
+    tags: ["Development", "Design", "UX"],
+    roles: ["Developer"],
+    projectType: "Group project",
+    teamSize: 3,
+    opleiding: "DEVINE",
+    techs: ["Arduino", "Sensors", "Phaser"],
+    briefing: `JEF's Assignment: Develop a custom-designed multiplayer audiovisual installation for children
+and/or young people visiting the XL-Medialab during the 2026 Antwerp Youth Film Festival.`,
+githubUrl: "https://github.com/Verbrugghejara/bap-devine",
+    imageUrl: "/portfolio/projects/journeyToTheUpperworld.png",
+    video: "/portfolio/projects/project-bap.mp4",
+
+  }
 ];
 
-export const main = projects.filter(p => p.id >= 1 && p.id <= 5);
+export const main = projects.filter(p => p.id >= 1 && p.id <= 6);
