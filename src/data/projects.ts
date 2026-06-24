@@ -6,7 +6,6 @@ export const projects = [
     program: "MCT",
     tags: ["Development", "Design"],
     projectType: "Individueel project",
-    opleiding: "MCT",
     techs: ["Python", "Flask", "HTML/CSS/JS", "MySQL", "Raspberry Pi"],
     briefing: `The project involved <span class="font-bold">building an autonomously operating device</span>
                 with a <span class="font-bold">Raspberry Pi</span> that processes data from at <span class="font-bold">least
@@ -33,7 +32,6 @@ export const projects = [
     roles: ["Embedded Software Developer (watch)"],
     projectType: "Group project",
     teamSize: 3,
-    opleiding: "MCT",
     techs: ["JavaScript", "Raspberry Pi", "Smartwatch", "Web app"],
     briefing: `Het ontwikkelen van een <span class="font-bold">innovatief</span> en <span class="font-bold">gebruiksvriendelijk</span> <span class="font-bold">scoreregistratiesysteem</span> voor <span class="font-bold">padelwedstrijden</span> dat de <span class="font-bold">spelbeleving</span> verhoogt, <span class="font-bold">fouten</span> en <span class="font-bold">discussies</span> voorkomt, en zowel <span class="font-bold">spelers</span> als <span class="font-bold">supporters</span> actief betrekt. Het systeem moet <span class="font-bold">automatisch</span> <span class="font-bold">punten registreren</span> via een <span class="font-bold">smartwatch</span>, deze gegevens <span class="font-bold">doorsturen</span> naar een <span class="font-bold">Raspberry Pi</span>, die de <span class="font-bold">score</span> verwerkt en weergeeft op een <span class="font-bold">LCD-scherm</span> en een <span class="font-bold">webapplicatie</span>. Daarnaast moet het systeem <span class="font-bold">toegankelijk</span> zijn voor alle <span class="font-bold">gebruikers</span>, inclusief <span class="font-bold">kinderen</span>, <span class="font-bold">ouderen</span> en mensen met <span class="font-bold">dyscalculie</span>, en bijdragen aan een <span class="font-bold">laagdrempelige</span> en <span class="font-bold">ontspannen</span> <span class="font-bold">speelervaring</span>.
 `,
@@ -51,7 +49,6 @@ export const projects = [
     roles: ["Front-end developer"],
     projectType: "Group project",
     teamSize: 3,
-    opleiding: "MCT",
     techs: ["UI design", "Front-end", "QR code", "Web prototype"],
     briefing: `Ontwikkel een <span class="font-bold">proof of concept</span> voor een nieuwe <span class="font-bold">kiosk</span> (“<span class="font-bold">ATM 3.0</span>”) voor <span class="font-bold">Kinepolis</span>. Deze <span class="font-bold">kiosk</span> moet een <span class="font-bold">overzicht</span> geven van de <span class="font-bold">films</span> die spelen en <span class="font-bold">bezoekers</span> op een <span class="font-bold">intuïtieve</span> manier via hun <span class="font-bold">smartphone</span> <span class="font-bold">tickets</span> laten kopen, door gebruik te maken van een <span class="font-bold">QR-code</span> die doorverwijst naar het <span class="font-bold">online platform</span> van <span class="font-bold">Kinepolis</span>. Het doel is een <span class="font-bold">kostenefficiënt</span> alternatief voor <span class="font-bold">dure onbemande kiosken</span> te creëren en <span class="font-bold">online sales</span> te stimuleren, zodat meer <span class="font-bold">klanten</span> geregistreerd en beter <span class="font-bold">gevolgd</span> kunnen worden.
 `,
@@ -66,7 +63,6 @@ export const projects = [
     program: "DEVINE",
     tags: ["Development", "Design"],
     projectType: "Individueel project",
-    opleiding: "DEVINE",
     techs: ["Interactive design", "Storytelling", "Web prototype"],
     briefing: `The <span class="font-bold">Plantin-Moretus Museum</span> commissioned us to design the second <span class="font-bold">interactive one-pager</span> in a series of six <span class="font-bold">digital stories</span>. This chapter focuses on the <span class="font-bold">family of Christophe Plantin</span>, exploring their role in continuing his <span class="font-bold">printing legacy</span>. The project aims to transform <span class="font-bold">historical content</span> into a <span class="font-bold">modern</span>, <span class="font-bold">immersive experience</span> through <span class="font-bold">storytelling</span>, <span class="font-bold">design</span>, and <span class="font-bold">interactivity</span>, allowing users to <span class="font-bold">learn by doing</span> and connect with the museum’s <span class="font-bold">rich heritage</span> in an <span class="font-bold">engaging</span> way.
 `,
@@ -84,7 +80,6 @@ export const projects = [
     roles: ["Backend developer", "Front-end developer"],
     projectType: "Group project",
     teamSize: 4,
-    opleiding: "DEVINE",
     techs: ["UX design", "Digital concept", "Figma", "Prototype"],
     briefing: `<span class="font-bold">Abby Kortrijk</span> asked us to create a <span class="font-bold">concept</span> that shows the <span class="font-bold">museum</span> is not only a place to <span class="font-bold">observe</span> but also a place to <span class="font-bold">do</span>, <span class="font-bold">create</span>, and <span class="font-bold">connect</span>. The goal is to present the ideas of <span class="font-bold">City Living</span>, with a focus on the <span class="font-bold">Atelier</span> and <span class="font-bold">Salon</span>, in a way that feels <span class="font-bold">familiar</span> and <span class="font-bold">inviting</span> so people are encouraged to <span class="font-bold">participate</span>, <span class="font-bold">share ideas</span>, and help <span class="font-bold">shape the program</span>.
 
@@ -105,7 +100,6 @@ We were tasked with designing an <span class="font-bold">integrated concept</spa
     program: "DEVINE",
     tags: ["Development"],
     roles: ["Mobile developer"],
-    opleiding: "DEVINE",
     techs: ["React Native", "Expo", "Mobile app"],
     briefing: `Build a native app using React native, where you're integrate at least one of the Expo SDK Components mentioned on https://docs.expo.dev/versions/latest/ (see sidebar below “Expo SDK” - Bonus points for showcasing features which are only available on native apps`,
     githubUrl: "https://github.com/Verbrugghejara/PhoneIt",
@@ -121,13 +115,26 @@ We were tasked with designing an <span class="font-bold">integrated concept</spa
     roles: ["Developer"],
     projectType: "Group project",
     teamSize: 3,
-    opleiding: "DEVINE",
     techs: ["Arduino", "Sensors", "Phaser"],
     briefing: `JEF's Assignment: Develop a custom-designed multiplayer audiovisual installation for children
 and/or young people visiting the XL-Medialab during the 2026 Antwerp Youth Film Festival.`,
 githubUrl: "https://github.com/Verbrugghejara/bap-devine",
+liveDemoUrl: "https://verbrugghejara.github.io/bap-devine/",
     imageUrl: "/portfolio/projects/journeyToTheUpperworld.png",
     video: "/portfolio/projects/project-bap.mp4",
+
+  },
+  {
+    id: 8,
+    title: "Sky navigator",
+    date: "2025-10-19",
+    program: "DEVINE",
+    tags: ["Development", "Design"],
+    projectType: "Individueel project",
+    techs: ["Blender", "WebGL", "ThreeJS"],
+    briefing: `Find a fragment shader you like on Shadertoy.com and tweak it. Embed it in a ThreeJS environment. Extra marks for creative interaction in the ThreeJS environment, embedding 3D models your created yourself, interaction with the embedded shader,...`,
+    githubUrl: "https://verbrugghejara.github.io/webgl/",
+    liveDemoUrl: "https://verbrugghejara.github.io/webgl/",
 
   }
 ];
