@@ -134,12 +134,12 @@
                         <div class="flex items-center gap-2">
                             <GraduateIcon class="w-5 h-5 text-alphaOrange" />
                             <h4 class="font-semibold">
-                                Opleiding
+                                Program
                             </h4>
                         </div>
 
                         <p class="mt-2 ">
-                            {{ project.opleiding }}
+                            {{ project.program }}
                         </p>
                     </div>
 
