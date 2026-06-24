@@ -135,6 +135,7 @@ liveDemoUrl: "https://verbrugghejara.github.io/bap-devine/",
     briefing: `Find a fragment shader you like on Shadertoy.com and tweak it. Embed it in a ThreeJS environment. Extra marks for creative interaction in the ThreeJS environment, embedding 3D models your created yourself, interaction with the embedded shader,...`,
     githubUrl: "https://verbrugghejara.github.io/webgl/",
     liveDemoUrl: "https://verbrugghejara.github.io/webgl/",
+    imageUrl: "/portfolio/projects/webGL.png",
 
   }
 ];
